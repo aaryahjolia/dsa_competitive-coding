@@ -1,0 +1,5 @@
+# Ignore the outer .md files that are not in any folder
+.md
+
+#Ignore .exe files in whole repository
+*.exe
