@@ -9,11 +9,12 @@ Steps to contribute your code in any of the mentioned dsa folder:
 1. [Star](https://help.github.com/en/articles/about-stars) :star: the repository.
 2. [Fork](https://help.github.com/en/articles/fork-a-repo) the repository into your github account.
 3. Clone the repository into your local system b using git clone command OR edit it online on github.
-4. Write necessary code in your preferred dsa folder, also mark it `Done` in that folder's .md file.
-5. Commit the code with a meaningful description.
-6. [Push](https://help.github.com/en/articles/pushing-to-a-remote) the code to your cloned repository on your github account.
-7. Submit a [Pull Request](https://help.github.com/en/articles/about-pull-requests) with your updated repository into our repository.
-8. That's all! You've done your Open Source Contribution. Just wait for us to merge your code into main repository.
+4. Write necessary code in your preferred dsa folder, also mark it `Done` in that folder's .md file
+5. Always use [Coding Style](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Contribution_Guidelines.md#coding-style) when writing a code.
+6. Commit the code with a meaningful description.
+7. [Push](https://help.github.com/en/articles/pushing-to-a-remote) the code to your cloned repository on your github account.
+8. Submit a [Pull Request](https://help.github.com/en/articles/about-pull-requests) with your updated repository into our repository.
+9. That's all! You've done your Open Source Contribution. Just wait for us to merge your code into main repository.
 
 We are thankful to all the people showing interest in our repository.
 
