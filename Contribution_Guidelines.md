@@ -15,6 +15,7 @@ Steps to contribute your code in any of the mentioned dsa folder:
 7. [Push](https://help.github.com/en/articles/pushing-to-a-remote) the code to your cloned repository on your github account.
 8. Submit a [Pull Request](https://help.github.com/en/articles/about-pull-requests) with your updated repository into our repository.
 9. That's all! You've done your Open Source Contribution. Just wait for us to merge your code into main repository.
+10. If your code gets merged, Don't forget to contact me to add your name in [Contributors.md](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Contributors.md).
 
 We are thankful to all the people showing interest in our repository.
 
