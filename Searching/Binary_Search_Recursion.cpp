@@ -1,3 +1,7 @@
+/*
+Description : Binary search recursion finds an element in a sorted array with recursion.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 

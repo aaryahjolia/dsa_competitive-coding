@@ -1,3 +1,7 @@
+/*
+Description : Linear search finds an element through loop by iterating every element.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
