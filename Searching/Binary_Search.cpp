@@ -1,3 +1,7 @@
+/*
+Description : Binary search finds an element in a sorted array with Loops.
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
