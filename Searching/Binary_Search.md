@@ -49,7 +49,7 @@ return 0;
 
 ## Complexities:
 ### Time complexity   : 
-Best Case : O(1)
+Best Case  : O(1)  
 Worst Case : O(log n) 
 ### Space complexity  : 
 O(1)
