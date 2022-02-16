@@ -1,7 +1,7 @@
-/*
-Description : Binary search finds an element in a sorted array with Loops.
-*/
+### Description : 
+Binary search finds an element in a sorted array with Loops.
 
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -45,3 +45,11 @@ int main(){
     }
 return 0;
 }
+```
+
+## Complexities:
+### Time complexity   : 
+Best Case : O(1)
+Worst Case : O(log n) 
+### Space complexity  : 
+O(1)

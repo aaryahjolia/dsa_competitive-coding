@@ -1,10 +1,10 @@
 ## Searching Code completed
 
-[DONE] [Linear Search](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Linear_Search.cpp)
+[DONE] [Linear Search](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Linear_Search.md)
 
-[DONE] [Binary Search (Loop)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search.cpp) 
+[DONE] [Binary Search (Loop)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search.md) 
 
-[DONE] [Binary Search (Recursion)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search_Recursion.cpp)
+[DONE] [Binary Search (Recursion)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search_Recursion.md)
 
 ## Remaining
 

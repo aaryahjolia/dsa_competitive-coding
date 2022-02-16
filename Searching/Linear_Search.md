@@ -1,7 +1,7 @@
-/*
-Description : Linear search finds an element through loop by iterating every element.
-*/
+### Description : 
+Linear search finds an element through loop by iterating every element.
 
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -35,3 +35,11 @@ int main(){
     }
 return 0;
 }
+```
+
+## Complexities:
+### Time complexity   : 
+Best Case : O(1)
+Worst Case : O(n) 
+### Space complexity  : 
+O(1)
