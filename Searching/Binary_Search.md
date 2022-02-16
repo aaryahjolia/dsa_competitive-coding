@@ -1,6 +1,7 @@
-### Description : 
+## Description : 
 Binary search finds an element in a sorted array with Loops.
 
+### Code  
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
