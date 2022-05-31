@@ -1,7 +1,7 @@
-## Description : 
+## Description 
 Binary search finds an element in a sorted array with Loops.
 
-### Code  
+## Code  
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -59,7 +59,7 @@ return 0;
 }
 ```
 
-## Complexities:
+## Complexities
 ### Time complexity   : 
 Best Case  : O(1)  
 Worst Case : O(log n) 

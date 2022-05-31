@@ -8,4 +8,6 @@
 
 ## Remaining
 
+No Searching Algorithm remaining
+
 ### Open an Issue if you found that some other searching technique is remaining/missed.

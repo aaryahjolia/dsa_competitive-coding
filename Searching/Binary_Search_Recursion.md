@@ -1,7 +1,7 @@
-## Description : 
+## Description 
 Binary search recursion finds an element in a sorted array with recursion. 
 
-### Code
+## Code
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -54,7 +54,7 @@ return 0;
 }
 ```
 
-## Complexities:
+## Complexities
 ### Time complexity   : 
 Best Case : O(1)  
 Worst Case : O(log n) 
