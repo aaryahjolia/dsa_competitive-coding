@@ -3,3 +3,6 @@
 
 #Ignore .exe files in whole repository
 *.exe
+
+# Ignore vscode settings (If any)
+.vscode
