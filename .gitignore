@@ -1,8 +1,9 @@
 # Ignore the outer .md files that are not in any folder
 .md
 
-#Ignore .exe files in whole repository
+#Ignore .exe files, .cpp files in whole repository
 *.exe
+*.cpp
 
 # Ignore vscode settings (If any)
 .vscode
