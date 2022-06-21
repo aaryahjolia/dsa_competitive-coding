@@ -4,7 +4,7 @@ Vector are also called as dynamic arrays. It work like arrays and it is part of 
 ## Different Ways to Initialise a vector  
 
 ### Note : Vectors need an additional include.
-```
+```cpp
 #include<vector>
 ```
 But Everything will be included when we include <bits/stdc++.h>, so no need to import vector if we import all modules.

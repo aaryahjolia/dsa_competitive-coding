@@ -4,6 +4,7 @@
 #Ignore .exe files, .cpp files in whole repository
 *.exe
 *.cpp
+*.c
 
 # Ignore vscode settings (If any)
 .vscode
