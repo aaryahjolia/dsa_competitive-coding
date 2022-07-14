@@ -6,5 +6,6 @@
 *.cpp
 *.c
 
-# Ignore vscode settings (If any)
+# Ignore vscode settings (If any) and Temp folder 
 .vscode
+temp
