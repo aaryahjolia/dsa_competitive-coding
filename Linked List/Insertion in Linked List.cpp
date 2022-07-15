@@ -1,80 +1,114 @@
-
 #include <bits/stdc++.h>
+using namespace std;
 
-struct Node{
-
+struct ListNode{
     int data;
-    struct Node *next;
+    struct ListNode *next;
 };
 
-void push(struct Node** head_ref, int new_data){
+struct ListNode *insertAtBeginning(struct ListNode *head, int data){
 
-    struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
-    newnode -> data = new_data;
-    newnode -> next = *head_ref;
-    *head_ref = newnode;
+    struct ListNode *temp;
+
+    temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+    temp ->data = data;
+    temp ->next = NULL;
+
+    if (head == NULL){
+        head = temp;
+        head->next = NULL;
+    }
+
+    else{
+        temp -> next = head;
+        head = temp;
+    }
+
+    return head;
 }
 
-void insertAfter(struct Node* prev_node, int new_data)
-{
-	if (prev_node == NULL){
-	printf("the given previous node cannot be NULL");
-	return;
-	}
+struct ListNode *insertAtEnd(struct ListNode *head, int data){
+    struct ListNode *temp, *curr;
 
-	struct Node* new_node =(struct Node*) malloc(sizeof(struct Node));
+    temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+    temp -> data = data;
+    temp -> next = NULL;
 
-	new_node->data = new_data;
-
-	new_node->next = prev_node->next;
-
-	prev_node->next = new_node;
-}
-
-void append(struct Node** head_ref, int new_data){
+    curr = head;
+    if (curr == NULL)  
+        head = temp;
     
-	struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+    else{
 
-	struct Node *last = *head_ref; 
-	
-	new_node->data = new_data;
+        while (curr -> next != NULL)
+            curr = curr -> next;
+        
+        curr -> next = temp;
+    }
 
-	new_node->next = NULL;
-
-	if (*head_ref == NULL){
-	*head_ref = new_node;
-	return;
-	}
-
-	while (last->next != NULL)
-		last = last->next;
-
-	last->next = new_node;
-	return;
+    return head;
 }
 
-void printList(struct Node *node){
-    while (node != NULL)
-    {
-        printf(" %d ", node->data);
-        node = node->next;
+struct ListNode *insertAtGivenPosition(struct ListNode *head, struct ListNode *newNode, int n){
+
+    struct ListNode *pred = head;
+
+    if (n <= 1){
+        newNode -> next = head;
+        return newNode;
+    }
+
+    while (--n && pred != NULL)
+        pred = pred -> next;
+
+    if (pred == NULL)
+        return NULL;
+
+    newNode -> next = pred -> next;
+    pred -> next = newNode;
+    return head;
+}
+
+void printList(ListNode* n)
+{
+    while (n != NULL) {
+        cout << n->data << " ";
+        n = n->next;
     }
 }
 
-int main(){
-    struct Node* head = NULL;
-    append(&head, 6);
+int main()
+{
+    ListNode* head = NULL;
+    ListNode* second = NULL;
+    ListNode* third = NULL;
+    ListNode* newNode = NULL;
+  
+    //allocate 3 nodes in the heap
+    head = new ListNode();
+    second = new ListNode();
+    third = new ListNode();
+  
+    head->data = 1; // assign data in first node
+    head->next = second; // Link first node with second
+  
+    second->data = 2; // assign data to second node
+    second->next = third;
+  
+    third->data = 3; // assign data to third node
+    third->next = NULL;
 
-    push(&head, 7);
+    head = insertAtBeginning(head, 4);
 
-    push(&head, 1);
+    newNode = new ListNode();
+    newNode->data = 5;
+    newNode->next = NULL;
 
-    append(&head, 4);
+    head = insertAtGivenPosition(head, newNode, 5);
 
-    insertAfter(head->next, 8);
-
-    printf("\n Created Linked list is: ");
+    head = insertAtEnd(head, 6);
+  
     printList(head);
-
+  
     return 0;
 }
