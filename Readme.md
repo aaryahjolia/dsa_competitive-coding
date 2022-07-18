@@ -38,7 +38,7 @@ C++
 
 # Part of Open Source Programs
 
-### Hack Club RAIT SOC
+### [Hack Club RAIT SOC](https://soc.hackclubrait.co/)
 
 ![1632670084686](https://user-images.githubusercontent.com/80090908/179052180-5067b5fe-9c98-421e-b818-ae4bd7976ca8.jpg)
 
