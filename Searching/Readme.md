@@ -2,7 +2,7 @@
 
 [Linear Search](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Linear_Search.md)
 
-[Binary Search (Loop)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search.md) 
+[Binary Search (Loop)](./Binary_Search.md) 
 
 [Binary Search (Recursion)](https://github.com/aaryahjolia/dsa_competitive-coding/blob/main/Searching/Binary_Search_Recursion.md)
 
