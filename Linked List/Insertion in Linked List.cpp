@@ -96,7 +96,7 @@ int main()
 
     head = insertAtEnd(head, 60);
   
-    while (n != NULL) {
+    while (head != NULL) {
         cout << n->data << " ";
         n = n->next;
     }
