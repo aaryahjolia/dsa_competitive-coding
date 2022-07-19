@@ -69,46 +69,37 @@ struct ListNode *insertAtGivenPosition(struct ListNode *head, struct ListNode *n
     return head;
 }
 
-void printList(ListNode* n)
+int main()
 {
+    ListNode* head = new ListNode();
+    ListNode* temp1 = new ListNode();
+    ListNode* temp2 = new ListNode();
+    ListNode* temp3 = new ListNode();
+  
+      
+    head->data = 10; 
+    head->next = temp1; 
+  
+    temp1->data = 20; 
+    temp1->next = temp2;
+  
+    temp2->data = 30; 
+    temp2->next = temp3;
+
+    head = insertAtBeginning(head, 40);
+
+    temp3 = new ListNode();
+    temp3->data = 5;
+    temp3->next = NULL;
+
+    head = insertAtGivenPosition(head, temp3, 50);
+
+    head = insertAtEnd(head, 60);
+  
     while (n != NULL) {
         cout << n->data << " ";
         n = n->next;
     }
-}
-
-int main()
-{
-    ListNode* head = NULL;
-    ListNode* second = NULL;
-    ListNode* third = NULL;
-    ListNode* newNode = NULL;
-  
-    //allocate 3 nodes in the heap
-    head = new ListNode();
-    second = new ListNode();
-    third = new ListNode();
-  
-    head->data = 1; // assign data in first node
-    head->next = second; // Link first node with second
-  
-    second->data = 2; // assign data to second node
-    second->next = third;
-  
-    third->data = 3; // assign data to third node
-    third->next = NULL;
-
-    head = insertAtBeginning(head, 4);
-
-    newNode = new ListNode();
-    newNode->data = 5;
-    newNode->next = NULL;
-
-    head = insertAtGivenPosition(head, newNode, 5);
-
-    head = insertAtEnd(head, 6);
-  
-    printList(head);
   
     return 0;
 }
