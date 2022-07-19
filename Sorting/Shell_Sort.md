@@ -46,8 +46,11 @@ int main() {
 ## Complexities
 ### Time complexity   : 
 Best Case  : O(nlog n)
+
 Worst Case : O(n<sup>2</sup>)
+
 Average    : O(nlog n)
+
 ### Space complexity  : 
 O(1)
 
