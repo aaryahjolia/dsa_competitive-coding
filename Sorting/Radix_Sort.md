@@ -76,8 +76,11 @@ int main() {
 ## Complexities
 ### Time complexity   : 
 Best Case  : O(n+k)
+
 Worst Case : O(n+k)
+
 Average    : O(n+k)
+
 ### Space complexity  : 
 O(max)
 
