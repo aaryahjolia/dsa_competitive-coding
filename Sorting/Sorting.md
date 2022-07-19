@@ -12,15 +12,16 @@
 
 [Selection Sort](./Selection_Sort.md)
 
+[Shell Sort](./Shell_Sort.md)
+
+[Radix Sort](./Radix_Sort.md)
+
 
 ## Remaining
 
 1. Count Sort
 
-2. Radix Sort
+2. Bucket Sort
 
-3. Bucket Sort
-
-4. Shell Sort
 
 ### Open an Issue if you found that some other sorting technique(s) is remaining/missed.
