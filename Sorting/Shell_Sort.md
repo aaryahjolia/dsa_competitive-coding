@@ -1,44 +1,41 @@
 ## Description 
-Shell sort is a generalized version of the insertion sort algorithm. It first sorts elements that are far apart from each other and successively reduces the interval between the elements to be sorted.
+Shell sort is a variation version of the insertion-sort algorithm. It intially sorts elements that are far apart from each other and successively reduces the interval between the elements to be sorted.
 
 ## Code  
 ```cpp
 
-// Shell Sort in C++ programming
-
 #include <iostream>
 using namespace std;
 
-// Shell sort
-void shellSort(int array[], int n) {
-  // Rearrange elements at each n/2, n/4, n/8, ... intervals
-  for (int interval = n / 2; interval > 0; interval /= 2) {
-    for (int i = interval; i < n; i += 1) {
-      int temp = array[i];
+
+void ShellSort(int arr[], int n) {
+
+  for (int level = n / 2; level > 0; level /= 2) {
+    for (int i = level; i < n; i += 1) {
+      int temp = arr[i];
       int j;
-      for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
-        array[j] = array[j - interval];
+      for (j = i; j >= level && arr[j - level] > temp; j -= level) {
+        arr[j] = arr[j - level];
       }
-      array[j] = temp;
+      arr[j] = temp;
     }
   }
 }
 
-// Print an array
+
 void printArray(int array[], int size) {
-  int i;
-  for (i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     cout << array[i] << " ";
   cout << endl;
 }
 
-// Driver code
+
 int main() {
-  int data[] = {9, 8, 3, 7, 5, 6, 4, 1};
-  int size = sizeof(data) / sizeof(data[0]);
-  shellSort(data, size);
-  cout << "Sorted array: \n";
-  printArray(data, size);
+  int arr[] = {10, 2, 3, 7, 4, 6, 5, 1};
+  int size = sizeof(arr) / sizeof(arr[0]);
+  ShellSort(arr, size);
+  cout << "Sorted Array : \n";
+  printArray(arr, size);
 }
 
 ```
