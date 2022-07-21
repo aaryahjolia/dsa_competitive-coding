@@ -3,22 +3,17 @@
 
 ```
 class Solution {
-    vector<int> res;
-    int position = 0;
-    void dfs(TreeNode *root) {
-        // recursive call inorder: left
-        if (root->left) dfs(root->left);
-        // write the value into res
-        res[position++] = root->val;
-        // recursive call inorder: right
-        if (root->right) dfs(root->right);
-    }
 public:
-    vector<int> inorderTraversal(TreeNode *root) {
-        res.resize(101);
-        if (root) dfs(root);
-        res.resize(position);
-        return res;
+    void dfs(TreeNode* root, vector<int> &answer){
+        if(root==NULL) return;
+        dfs(root->left, answer);
+        answer.push_back(root->val);
+        dfs(root->right, answer);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> answer;
+        dfs(root, answer);
+        return answer;
     }
 };
 ```
