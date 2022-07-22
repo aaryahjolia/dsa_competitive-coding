@@ -10,17 +10,14 @@ In this traversal approach, the left subtree is visited first, then the root, an
 ``` cpp
 class Solution {
 public:
-    void dfs(TreeNode* root, vector<int> &answer){
-        if(root==NULL) return;
-        dfs(root->left, answer);
-        answer.push_back(root->val);
-        dfs(root->right, answer);
-    }
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> answer;
-        dfs(root, answer);
-        return answer;
-    }
+	vector<int> ans;
+	vector<int> inorderTraversal(TreeNode* root) {
+		if(root == NULL) return ans;
+		inorderTraversal(root->left);
+        cout<<" "<<root->val;
+		inorderTraversal(root->right);
+		return ans;
+	}
 };
 ```
 
@@ -48,7 +45,7 @@ public:
             }
             root = stck.top();
             stck.pop();
-            ans.push_back(root->val);
+            cout<<" "<<root->val;
             root = root->right;
         }
         return ans;
