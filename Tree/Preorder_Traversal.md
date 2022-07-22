@@ -8,22 +8,15 @@ The root node is visited first, followed by the left subtree, and ultimately the
 3. Call Preorder to traverse the right subtree
 
 ```cpp
-class Solution {
- public:
-      vector<int>answer;
-      void pre(TreeNode* root){
-      if(root==nullptr) return;
-        answer.push_back(root->val);
-        pre(root->left);
-         pre(root->right);
- }
- vector<int> preorderTraversal(TreeNode* root){
-     if(root==nullptr)
-         return answer;
-     pre(root);
-         return answer;
- }
- };
+void preorder(TreeNode* root)
+{
+    if (root == nullptr) {
+        return;
+    }
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
 ```
 
 ## Iterative Approach
@@ -36,26 +29,23 @@ While is not empty, perform the following.
 4. To ensure that the left subtree is processed first, the right child is pushed before the left child.
 
 ```cpp
-class Solution {
-public:
-    vector<int> preorderTraversal(TreeNode* root) {
-        vector<int>ans;
+void preorderIterative(Node* root)
+{
         if(root==NULL) 
-            return ans;
+            return;
         stack<TreeNode* >stck;
         stck.push(root);
-        while(!st.empty()){
+        while(!stck.empty()){
             root=stck.top();
             stck.pop();
-            ans.push_back(root->val);
+            cout << root->data << " ";
             if(root->right!=NULL)
                 stck.push(root->right);
             if(root->left!=NULL)
                 stck.push(root->left);
         }
-        return ans;
     }
-};
+}
 ```
 ## Time and Space Complexity :
 
