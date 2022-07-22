@@ -8,17 +8,14 @@ In this traversal approach, the left subtree is visited first, then the root, an
 3. Call Inorder to traverse the right subtree
 
 ``` cpp
-class Solution {
-public:
-	vector<int> ans;
-	vector<int> inorderTraversal(TreeNode* root) {
-		if(root == NULL) return ans;
-		inorderTraversal(root->left);
-                cout<<" "<<root->val;
-		inorderTraversal(root->right);
-		return ans;
-	}
-};
+void inorder(TreeNode* root)
+{    if (root == nullptr) {
+        return;
+    }
+     inorder(root->left);
+     cout << root->data << " ";
+     inorder(root->right);
+}
 ```
 
 ## Iterative Approach :
@@ -36,7 +33,6 @@ public:
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> ans;
         stack<TreeNode *> stck;
         while(root or !stck.empty()){
             while (root) {
@@ -45,10 +41,9 @@ public:
             }
             root = stck.top();
             stck.pop();
-            cout<<" "<<root->val;
+            cout<<root->val<<" ";
             root = root->right;
         }
-        return ans;
     }
 };
 ```
