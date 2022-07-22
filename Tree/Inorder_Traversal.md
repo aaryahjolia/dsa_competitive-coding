@@ -14,7 +14,7 @@ public:
 	vector<int> inorderTraversal(TreeNode* root) {
 		if(root == NULL) return ans;
 		inorderTraversal(root->left);
-        cout<<" "<<root->val;
+                cout<<" "<<root->val;
 		inorderTraversal(root->right);
 		return ans;
 	}
