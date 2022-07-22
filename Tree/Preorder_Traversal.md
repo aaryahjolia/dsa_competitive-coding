@@ -1,6 +1,13 @@
-## Recursive Approach
+# Preorder Traversal :
+The root node is visited first, followed by the left subtree, and ultimately the right subtree in this traversal strategy.
 
-```
+## Recursive Approach :
+### Algorithm :
+1. Go to the root.
+2. Call Preorder to traverse the left subtree
+3. Call Preorder to traverse the right subtree
+
+```cpp
 class Solution {
  public:
       vector<int>answer;
@@ -20,8 +27,15 @@ class Solution {
 ```
 
 ## Iterative Approach
+### Algorithm :
+Make an empty stack and add the root node to it.
+While is not empty, perform the following.
+1. Pop a stack item and print it.
+2. Stack by pushing the right child of a popped item.
+3. Stack the left offspring of a popped item.
+4. To ensure that the left subtree is processed first, the right child is pushed before the left child.
 
-```
+```cpp
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -43,3 +57,8 @@ public:
     }
 };
 ```
+## Time and Space Complexity :
+
+For both the cases
+* Time Complexity: O(n)  
+* Space Complexity: O(n)
