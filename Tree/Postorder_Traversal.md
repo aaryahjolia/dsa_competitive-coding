@@ -8,20 +8,15 @@ This traversal method visits the root node last, hence the name. We go through t
 3. Go to the root.
 
 ```cpp
-class Solution {
-public:
-    void dfs(TreeNode* root, vector<int>& answer){
-        if(root==NULL) return;
-        dfs(root->left, answer);
-        dfs(root->right, answer);
-        answer.push_back(root->val);
+void postorder(Node* root)
+{
+    if (root == nullptr) {
+        return;
     }
-    vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> answer;
-        dfs(root, answer);
-        return answer;
-    }
-};
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
 ```
 
 ## Iterative Approach :
