@@ -76,7 +76,7 @@ int main(){
         cout<<ar[i]<<" ";
     }
     cout<<endl;
-    insertion_sort(ar,size);
+    sort(ar,0,size);
     cout<<"After sort : "<<endl;
     for(int i=0;i<size;i++){
         cout<<ar[i]<<" ";
@@ -86,6 +86,9 @@ return 0;
 }
 
 ```
+
+## Run Code
+https://ide.geeksforgeeks.org/a0945978-df8b-4b98-bfe5-ffa716a8a535
 
 ## Complexities
 ### Time complexity   : 
