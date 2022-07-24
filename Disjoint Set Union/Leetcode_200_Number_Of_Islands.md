@@ -1,5 +1,5 @@
 
-Problem Link: [Number Of Islands](https://leetcode.com/problems/longest-consecutive-sequence/)
+Problem Link: [Number Of Islands](https://leetcode.com/problems/number-of-islands/)
 <br/>
 Author: [Yuvraj Parashar](https://github.com/yvrjprshr)
 
