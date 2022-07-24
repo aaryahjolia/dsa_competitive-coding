@@ -2,7 +2,6 @@
 Problem Link: [Number Of Islands](https://leetcode.com/problems/longest-consecutive-sequence/)
 <br/>
 Author: [Yuvraj Parashar](https://github.com/yvrjprshr)
-*/
 
 ```cpp
 #include<bits/stdc++.h>
