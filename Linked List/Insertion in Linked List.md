@@ -4,7 +4,7 @@
 🎯 Insertion at a given position <br>
 
 ## Let's start by creating a ListNode:
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -18,7 +18,7 @@ struct ListNode{
 1. We check if *head* already exists
 2. If it does, we point the new node's next to it and make the new node as the new head.
 
-```
+```cpp
 struct ListNode *insertAtBeginning(struct ListNode *head, int data){
 
     struct ListNode *temp;
@@ -46,7 +46,7 @@ struct ListNode *insertAtBeginning(struct ListNode *head, int data){
 2. Then point the next pointer to the new node.
 3. The new node's next pointer points to *NULL*
 
-```
+```cpp
 struct ListNode *insertAtEnd(struct ListNode *head, int data){
     struct ListNode *temp, *curr;
 
@@ -74,7 +74,7 @@ struct ListNode *insertAtEnd(struct ListNode *head, int data){
 1. Run a loop to reach the given position.
 2. Point new node's next pointer to previous node's next.
 3. And make the new node as the next of previous node.
-```
+```cpp
 struct ListNode *insertAtGivenPosition(struct ListNode *head, struct ListNode *newNode, int n){
 
     struct ListNode *pred = head;
@@ -97,7 +97,7 @@ struct ListNode *insertAtGivenPosition(struct ListNode *head, struct ListNode *n
 ```
 
 ## Print List:
-```
+```cpp
 void printList(ListNode* n)
 {
     while (n != NULL) {
@@ -108,7 +108,7 @@ void printList(ListNode* n)
 ```
 
 ## *MAIN* function ():
-```
+```cpp
 int main()
 {
     ListNode* head = NULL;
