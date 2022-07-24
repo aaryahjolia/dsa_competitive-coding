@@ -79,7 +79,7 @@ The '.' character indicates empty cells.
 
 
 
-```
+```cpp
 
 
 class Solution {
