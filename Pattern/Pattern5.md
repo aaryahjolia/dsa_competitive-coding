@@ -41,33 +41,12 @@ int main(){
 
 ## Output
 ```
-n = 5;
 1234554321
 1234**4321
 123****321
 12******21
 1********1
-
-## 1st traingle
-12345
-1234
-123
-12
-1
-
-## 2nd triangle
-**
-****
-******
-********
-
-## 3rd traingle
-54321
-4321
-321
-21
-1
 ```
 
-## Prerequisite 
-Don't just watch the code use it and do changes for better understanding
+## GFG IDE CODE
+https://ide.geeksforgeeks.org/a341dbe2-68f7-4d6b-9ce0-b06f61c6d20e

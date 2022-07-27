@@ -33,11 +33,10 @@ int main(){
 
 ## Output
 ```
-n = 3;
 *
 * *
 * * *
 ```
 
-## Prerequisite 
-Don't just watch the code use it and do changes for better understanding
+## GFG URL CODE
+https://ide.geeksforgeeks.org/21afee75-c704-4fe7-a2dc-92c5f20eaa98

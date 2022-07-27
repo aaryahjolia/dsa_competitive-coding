@@ -44,23 +44,11 @@ int main(){
 
 ## Output
 ```
-n = 4;
    1   
   121
  12321 
 1234321
-
-## 1st triangle
-   1
-  12
- 123
-1234
-
-## 2nd triangle
-  1
-  21
-  321
 ```
-
-## Prerequisite 
-Don't just watch the code use it and do changes for better understanding
+ 
+## GF IDE CODE
+https://ide.geeksforgeeks.org/cfaf9649-f1cf-4b8f-95b9-bd8d3459caf7

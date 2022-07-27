@@ -33,11 +33,10 @@ int main(){
 
 ## Output
 ```
-n = 3;
 A B C
 B C D
 C D E
 ```
 
-## Prerequisite 
-Don't just watch the code use it and do changes for better understanding
+## GFG IDE CODE
+https://ide.geeksforgeeks.org/7518d39c-1fa6-4c6b-a71e-bf94e16bd94f
