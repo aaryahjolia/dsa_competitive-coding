@@ -9,7 +9,7 @@ The programming paradigm where everything is represented as an object is known a
 OOPs (Object Oriented Programming System)
 Object means a real word entity such as pen, chair, table etc. Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies the software development and maintenance by providing some concepts:
 
-<h2>Cpp Oops concept </h2> 
+<h2>Cpp OOPs concept </h2> 
 
 -Object
 
@@ -77,19 +77,22 @@ In C++, class is a group of similar objects. It is a template from which objects
 Let's see an example of C++ class that has three fields only.
 
 
-<mark>class Student    
+```
+class Student    
 {    
 public:  
 int id;  //field or data member     
 float salary; //field or data member  
 String name;//field or data member    
-}    </mark>
+}  
+```
 
 <h4>C++ Object and Class Example</h4>
 
 Let's see an example of class that has two fields: id and name. It creates instance of the class, initializes the object and prints the object value.
 
-<mark>#include <iostream>
+
+```#include <iostream>
 using namespace std;  
 class Student {  
 public:  
@@ -103,7 +106,8 @@ s1.name = "Sonoo Jaiswal";
 cout<<s1.id<<endl;  
 cout<<s1.name<<endl;  
 return 0;  
-} </mark> 
+} 
+
 
 Output:
 
@@ -111,11 +115,15 @@ Output:
 
 Sonoo Jaiswal
 
+```
+
+
 C++ Class Example: Initialize and Display data through method
 
 Let's see another example of C++ class where we are initializing and displaying object through method.
 
-<mark>#include <iostream>
+
+```#include <iostream>
 using namespace std;  
 class Student {  
 public:  
@@ -139,18 +147,22 @@ s2.insert(202, "Nakul");
 s1.display();    
 s2.display();  
 return 0;  
-}  </mark>
+}  
 
 Output:
 
 201     Sonoo
 
 202     Nakul
+```
+
+
 
 C++ Class Example: Store and Display Employee Information
 Let's see another example of C++ class where we are storing and displaying employee information using method.
 
-<mark>#include <iostream>
+
+```#include <iostream>
 using namespace std;  
 class Employee {  
 public:  
@@ -176,10 +188,11 @@ e2.insert(202, "Nakul", 29000);
 e1.display();    
 e2.display();    
 return 0;  
-}  </mark>
+}  
 
 Output:
 
 201  Sonoo  990000
 
 202  Nakul  29000
+```
