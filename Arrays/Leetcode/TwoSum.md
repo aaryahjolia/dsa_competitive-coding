@@ -23,17 +23,24 @@ Output: [1,2]
 
 ### Solution :
 
-- In Python
+- In Java
 
 ```c
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prevMap = {}  # val -> index
-        for i, n in enumerate(nums):
-            diff = target - n
-            if diff in prevMap:
-                return [prevMap[diff], i]
-            prevMap[n] = i
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer,Integer> indexMap = new HashMap<Integer,Integer>();
+        for(int i = 0; i < numbers.length; i++){
+            Integer requiredNum = (Integer)(target - numbers[i]);
+            if(indexMap.containsKey(requiredNum)){
+                int toReturn[] = {indexMap.get(requiredNum), i};
+                return toReturn;
+            }
+
+            indexMap.put(numbers[i], i);
+        }
+        return null;
+    }
+}
 ```
 - In C++
 
