@@ -24,31 +24,7 @@ Explanation: The only possible triplet does not sum up to 0.
 - Using three pointers
 - The idea is to sort the array first, then run two loops to process the triplets. We fix the outer loop and move the two pointers (indexes) of the inner loop inwards to arrive at the result.
 
-### In Python
-```c
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        nums.sort()
-        for i, a in enumerate(nums):
-            if i > 0 and a == nums[i - 1]:
-                continue
-            l, r = i + 1, len(nums) - 1
-            while l < r:
-                threeSum = a + nums[l] + nums[r]
-                if threeSum > 0:
-                    r -= 1
-                elif threeSum < 0:
-                    l += 1
-                else:
-                    res.append([a, nums[l], nums[r]])
-                    l += 1
-                    while nums[l] == nums[l - 1] and l < r:
-                        l += 1
-        return res
-```
-### Time Complexity - O(n^2)
-### Space Complexity - O(1)
+
 ### In C++
 ```c
 class Solution {
@@ -60,13 +36,15 @@ public:
         if (n < 3) {
             return result;
         }
-        
+        # Sort the given array
         sort(nums.begin(), nums.end());
         
         for (int i = 0; i < n - 2; i++) {
             if (nums[i] > 0) {
                 break;
             }
+            # Skip all duplicates from left
+            # num1Idx>0 ensures this check is made only from 2nd element onwards
             if (i > 0 && nums[i - 1] == nums[i]) {
                 continue;
             }
@@ -82,8 +60,9 @@ public:
                 } else if (sum > 0) {
                     k--;
                 } else {
-                    result.push_back({nums[i], nums[j], nums[k]});
+                    result.push_back({nums[i], nums[j], nums[k]}); # Add triplet to result
                     
+                    # Skip all duplicates from right
                     while (j < k && nums[j] == nums[j + 1]) {
                         j++;
                     }
