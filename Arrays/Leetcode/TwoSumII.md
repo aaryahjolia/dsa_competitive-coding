@@ -16,20 +16,24 @@ Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We retu
 
 ### Using Two pointers
 
-- In Python
+- In Java
 
 ```c
-class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        l, r = 0, len(numbers) - 1
-        while l < r:
-            curSum = numbers[l] + numbers[r]
-            if curSum > target:
-                r -= 1
-            elif curSum < target:
-                l += 1
-            else:
-                return [l + 1, r + 1]
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer,Integer> indexMap = new HashMap<Integer,Integer>();
+        for(int i = 0; i < numbers.length; i++){
+            Integer requiredNum = (Integer)(target - numbers[i]);
+            if(indexMap.containsKey(requiredNum)){
+                int toReturn[] = {indexMap.get(requiredNum), i};
+                return toReturn;
+            }
+
+            indexMap.put(numbers[i], i);
+        }
+        return null;
+    }
+}
 ```
 - In C++
 ```c
