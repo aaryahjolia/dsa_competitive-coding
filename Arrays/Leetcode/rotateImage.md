@@ -18,30 +18,36 @@ Output: [[7,4,1],[8,5,2],[9,6,3]]
 
 ## Solution :
 
-- In Python
+- In Java
 
 ```c
-class Solution:
-    def rotate(self, matrix: List[List[int]]) -> None:
-        """
-        Do not return anything, modify matrix in-place instead.
-        """
-        l, r = 0, len(matrix) - 1
-        while l < r:
-            for i in range(r - l):
-                top, bottom = l, r
-                # save the topleft
-                topLeft = matrix[top][l + i]
-                # move bottom left into top left
-                matrix[top][l + i] = matrix[bottom - i][l]
-                # move bottom right into bottom left
-                matrix[bottom - i][l] = matrix[bottom][r - i]
-                # move top right into bottom right
-                matrix[bottom][r - i] = matrix[top + i][r]
-                # move top left into top right
-                matrix[top + i][r] = topLeft
-            r -= 1
-            l += 1
+class Solution {
+    public void rotate(int[][] matrix) {
+        //in this que for clockwise we do column reverse and for anticlockwise row reverse now after reversing we do the transpose of the matrix
+        //1.Transpose of matrix
+        for(int r=0;r<matrix.length;r++){
+            for(int c=0;c<r;c++){
+                int temp=matrix[r][c];
+                matrix[r][c]=matrix[c][r];
+                matrix[c][r]=temp;
+            }
+        }
+            
+        
+        //2.we here reverse the column bcoz it is c.w
+        int fc=0;  //firstcol
+        int lc=matrix[0].length-1;  //lastcol
+         while(fc<lc){
+             //now here we are swapping the first
+             for(int r=0;r<matrix.length;r++){
+                 int temp=matrix[r][fc];
+                 matrix[r][fc]=matrix[r][lc];
+                 matrix[r][lc]=temp;
+             }
+             fc++; lc--;
+         }
+    }
+}
 ```
 - In C++
 
@@ -49,11 +55,13 @@ class Solution:
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
+    //Transpose
         int n = matrix.size();
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
                 swap(matrix[i][j], matrix[j][i]);
             }
+            // Reverse
             reverse(matrix[i].begin(), matrix[i].end());
         }
     }
