@@ -1,11 +1,21 @@
-# Postorder Traversal
-This traversal method visits the root node last, hence the name. We go through the left subtree first, then the right subtree, and lastly the root node.
+# Postorder Traversal (DFS)
+This traversal method visits the root node last, hence the name. We go through the left subtree first, then the right subtree, and lastly the root node.  
+(Left, Right, Root)
+
+## Example
+
+![Binary_Tree](https://user-images.githubusercontent.com/82600388/184525938-cba5ca0d-8d65-41da-9447-b948c0091a34.png)
+
+Postorder Traversal : 
+```
+1 4 7 6 3 10 13 14 10 8
+```
 
 ## Recursive Approach :
 ### Algorithm :
 1. Call Postorder to traverse the left subtree
 2. Call Postorder to traverse the right subtree
-3. Go to the root.
+3. Print the root.
 
 ```cpp
 void postorder(Node* root)
@@ -35,13 +45,13 @@ void postorder(Node* root)
 ```cpp
 class Solution {
 public:
-    vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(Node* root) {
         if (!root) return {};
         vector<int> ans;
-        stack<TreeNode*> stck;
+        stack<Node*> stck;
         stck.push(root);
         while (!stck.empty()){
-            TreeNode* node = stck.top();
+            Node* node = stck.top();
             if (node->left){
                 stck.push(node->left);
                 node->left = nullptr;
@@ -64,3 +74,7 @@ public:
 For both the cases
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Next Step
+
+[Preorder Traversal](./Preorder_Traversal.md)

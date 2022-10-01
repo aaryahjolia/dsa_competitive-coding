@@ -1,20 +1,31 @@
-# Inorder Traversal
-In this traversal approach, the left subtree is visited first, then the root, and finally the right subtree.
+# Inorder Traversal (DFS)
+In this traversal approach, the left subtree is visited first, then the root, and finally the right subtree.  
+(Left, Root, Right)
+
+## Example
+
+![Binary_Tree](https://user-images.githubusercontent.com/82600388/184525938-cba5ca0d-8d65-41da-9447-b948c0091a34.png)
+
+Inorder Traversal : 
+```
+1 3 4 6 7 8 10 13 14
+```
 
 ## Recursive Approach :
 ### Algorithm :
 1. Call Inorder to traverse the left subtree
-2. Go to the root.
+2. Print the root
 3. Call Inorder to traverse the right subtree
 
-``` cpp
-void inorder(TreeNode* root)
-{    if (root == nullptr) {
+```cpp
+void inorder(Node* root)
+{    
+    if (root == nullptr) {
         return;
     }
-     inorder(root->left);
-     cout << root->data << " ";
-     inorder(root->right);
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
 }
 ```
 
@@ -27,21 +38,21 @@ void inorder(TreeNode* root)
 * Remove the top item from the stack.
 * Print the popped item by setting current to popped item->right.
 * Proceed to step 3.
-5) If current is NULL and the stack is empty, we are finished.
+1) If current is NULL and the stack is empty, we are finished.
 
 ```cpp
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        stack<TreeNode *> stck;
-        while(root or !stck.empty()){
+    vector<int> inorderTraversal(Node* root) {
+        stack<Node*> stck;
+        while(root || !stck.empty()){
             while (root) {
                 stck.push(root);
                 root = root->left;
             }
             root = stck.top();
             stck.pop();
-            cout<<root->val<<" ";
+            cout<<root->data<<" ";
             root = root->right;
         }
     }
@@ -49,6 +60,10 @@ public:
 ```
 ## Time and Space Complexity :
 
-For both the cases
+For both the cases,
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Next Step
+
+[Postorder Traversal](./Postorder_Traversal.md)

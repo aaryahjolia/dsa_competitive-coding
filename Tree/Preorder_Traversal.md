@@ -1,14 +1,24 @@
-# Preorder Traversal :
+# Preorder Traversal (DFS)
 The root node is visited first, followed by the left subtree, and ultimately the right subtree in this traversal strategy.
+(Root, Left, Right)
+
+## Example
+
+![Binary_Tree](https://user-images.githubusercontent.com/82600388/184525938-cba5ca0d-8d65-41da-9447-b948c0091a34.png)
+
+Preorder Traversal : 
+```
+8 3 1 6 4 7 10 14 13
+```
 
 ## Recursive Approach :
 ### Algorithm :
-1. Go to the root.
+1. Print the root.
 2. Call Preorder to traverse the left subtree
 3. Call Preorder to traverse the right subtree
 
 ```cpp
-void preorder(TreeNode* root)
+void preorder(Node* root)
 {
     if (root == nullptr) {
         return;
@@ -31,19 +41,18 @@ While is not empty, perform the following.
 ```cpp
 void preorderIterative(Node* root)
 {
-        if(root==NULL) 
-            return;
-        stack<TreeNode* >stck;
-        stck.push(root);
-        while(!stck.empty()){
-            root=stck.top();
-            stck.pop();
-            cout << root->data << " ";
-            if(root->right!=NULL)
-                stck.push(root->right);
-            if(root->left!=NULL)
-                stck.push(root->left);
-        }
+    if(root==NULL) 
+        return;
+    stack<Node* >stck;
+    stck.push(root);
+    while(!stck.empty()){
+        root=stck.top();
+        stck.pop();
+        cout << root->data << " ";
+        if(root->right!=NULL)
+            stck.push(root->right);
+        if(root->left!=NULL)
+            stck.push(root->left);
     }
 }
 ```
@@ -52,3 +61,7 @@ void preorderIterative(Node* root)
 For both the cases
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Next Step
+
+[BFS Traversal](./BFS_Traversal.md)
