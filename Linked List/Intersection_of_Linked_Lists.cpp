@@ -34,7 +34,7 @@ ListNode* Solution::getIntersectionNode(ListNode* A, ListNode* B) {
     ListNode* q=B;
     //Here both pointers are not on same distance from intersecting point
     //So first we'll bring both pointers to same distance from intersecting point
-    while(p&&q){
+    while(p!=NULL && q!+NULL){
         p=p->next;
         q=q->next;
     }
@@ -44,7 +44,7 @@ ListNode* Solution::getIntersectionNode(ListNode* A, ListNode* B) {
     else if(q==NULL){
         q=A;
     }    
-    while(p&&q){
+    while(p!=NULL && q!=NULL){
         p=p->next;
         q=q->next;
     }
