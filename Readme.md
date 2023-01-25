@@ -1,5 +1,5 @@
 <div align="center">
-<h1> DSA & Competitive Coding </h1>
+<h1> DSA, Competitive Coding & Dynamic Programming </h1>
 
 
 <a href="https://github.com/aaryahjolia/dsa_competitive-coding"><img src="https://visitor-badge.laobi.icu/badge?page_id=aaryahjolia/dsa_competitive-coding" alt="visitor count"/></a>
