@@ -6,7 +6,7 @@ Binary search finds an element in a sorted array with Loops.
 #include<bits/stdc++.h>
 using namespace std;
 
-// Function for Binary Search
+// This is function for Binary Search
 int BinarySearch(int array[], int size, int to_find){
     // Defining high and low that are last and first element respectively
     int low=0,high=size-1;
