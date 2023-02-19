@@ -13,7 +13,7 @@ This repository contains all the Data Structures and Algorithms concepts and the
 # Contribute
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)  
 This is a freindly repository available for open source contributions. You can add and improve any code, your contribution is welcomed ❤️!     
-PS : Don't forget to follow [Contribution Guidelines](Contribution_Guidelines.md)
+PS : Don't forget to follow [Contribution Guidelines](CONTRIBUTING.md)
 
 # Currently Used Language
 C++
