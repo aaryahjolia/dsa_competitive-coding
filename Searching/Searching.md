@@ -6,6 +6,7 @@
 
 [Binary Search (Recursion)](./Binary_Search_Recursion.md)
 
+
 ## Remaining
 
 No Searching Algorithm remaining
