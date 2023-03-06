@@ -1,3 +1,9 @@
+## Description 
+Searching peak element in the mountain array using binary search 
+
+## Code
+```cpp
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -29,3 +35,11 @@ int main()
     cout << "Index of a peak point is " << findPeak(arr, n);
     return 0;
 }
+```
+
+
+## Complexities
+### Time complexity   : 
+Worst Case : O(log n) 
+### Space complexity  : 
+O(1)
