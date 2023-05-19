@@ -1,3 +1,8 @@
+Title: Searching a 2D Matrix
+
+Description:
+Searching a target value in a 2D matrix involves finding if the value exists in the matrix and returning its position if found. The matrix is sorted in ascending order both horizontally and vertically.
+
 C++ Code:
 ```cpp
 #include <iostream>
@@ -46,3 +51,18 @@ int main() {
 }
 ```
 
+Output:
+```
+Target value found in the matrix.
+```
+
+Explanation:
+The code uses a binary search approach to search for the target value in the 2D matrix. It treats the matrix as a flattened sorted array and performs a binary search on it.
+
+Initially, the left pointer is set to the first element of the flattened array (matrix[0][0]), and the right pointer is set to the last element (matrix[m-1][n-1]). While the left pointer is less than or equal to the right pointer, the code calculates the middle element and compares it with the target value.
+
+If the middle element is equal to the target, the function returns true, indicating that the target value is found. If the middle element is less than the target, the left pointer is updated to mid + 1 to search the right half of the remaining array. Otherwise, if the middle element is greater than the target, the right pointer is updated to mid - 1 to search the left half of the remaining array.
+
+The process continues until the target value is found or the left pointer surpasses the right pointer. If the target value is not found, the function returns false.
+
+In the given example, the target value is 16, and it is found in the matrix at position matrix[1][2]. Hence, the output states that the target value is found in the matrix.
