@@ -14,13 +14,10 @@
 
 [Count Sort](./Count_sort.md)
 
+[Shell Sort](./Shell_sort.md)
 
-## Remaining
+[Radix Sort](./Radix_sort.md)
 
-1. Radix Sort
-
-2. Bucket Sort
-
-3. Shell Sort
+[Bucket Sort](./Bucket_sort.md)
 
 ### Open an Issue if you found that some other sorting technique(s) is remaining/missed.
