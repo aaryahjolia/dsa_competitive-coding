@@ -1,7 +1,7 @@
 ## Description
 In this code you will find how you can make * pattern by using while loop
 
-## code 
+## Code 
 ```cpp
 
 #include <iostream>

@@ -6,6 +6,9 @@
 3. **Path**: A sequence of node of vertex such that none of the node is repeated or visited twice in the graph.
 4. **Cyclic**: If the graph contains a cycle (We can come back to same node after traversing the graph is called a cyclic graph). The opposite of a cyclic graph is an acyclic graph.
 5. **Weight / Cost**: If the edge is assigned a numerical value, The value is called the edge's weight or cost.
+6. **Degree**: The number of edges connected with neighbouring nodes.
+
+-> **IMP**: Sum of Degrees = 2 * No. of Edges
 
 There are primarily 2 types of graph:  
 ## 1. Undirected Graph  
