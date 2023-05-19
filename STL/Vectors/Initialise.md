@@ -50,7 +50,7 @@ vector<int> name2(name1);
 //5th way - Using the copy function for copying the vector
 vector<int> name1{1,2,3,4};
 vector<int> name2;
-copy(name1.begin(),name1.end();back_inserter(name2));         //back_inserter() function is used to insert values from the back
+copy(name1.begin(),name1.end(),back_inserter(name2));         //back_inserter() function is used to insert values from the back
 
 //6th way - Using the assign function to assign the contents of the old vector to the new vector
 vector<int> name1{1,2,3,4};
