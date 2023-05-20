@@ -19,10 +19,10 @@ using namespace std;
        while (si < ei)
 		{
 			while (arr[si] == 0 && si < ei)
-			left++;
+			si++;
 
 			while (arr[ei] == 1 && si < ei)
-				right--;
+				ei--;
 
 			if (si < ei)
 			{
