@@ -41,13 +41,13 @@ int maxSubArraySum(int a[], int size){
 
     for (int i = 0; i < size; i++) {
 
-        //Add the a[i] to calc_sum
+     //Add the a[i] to calc_sum
 
 	    calc_sum = calc_sum + a[i]; 
-        //If  max_sum is less than calc_sum then update max_sum to calc_sum. 
+     //If  max_sum is less than calc_sum then update max_sum to calc_sum. 
 	    if (max_sum < calc_sum)
 	        max_sum = calc_sum;
-        //If calc_sum < 0 then update calc_sum = 0      
+      //If calc_sum < 0 then update calc_sum = 0      
 	    if (calc_sum < 0)
 	    	calc_sum = 0;
 
