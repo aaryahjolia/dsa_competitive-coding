@@ -1,5 +1,5 @@
 ## Description  
-Linear search finds an element through loop by iterating every element.
+Linear search finds an element through a for loop by iterating over every element.
 
 ## Code  
 ```cpp

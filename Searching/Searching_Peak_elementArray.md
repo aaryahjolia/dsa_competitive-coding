@@ -1,6 +1,8 @@
 ## Description 
 Searching peak element in the mountain array using binary search 
 
+<!-- Peak element is the element in the array which is greater than it's just left and just right neighbours -->
+
 ## Code
 ```cpp
 
