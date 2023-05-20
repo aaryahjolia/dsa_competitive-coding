@@ -2,10 +2,13 @@
 
 [Linear Search](./Linear_Search.md)
 
-[Binary Search (Loop)](./Binary_Search.md) 
+[Binary Search (Loop)](./Binary_Search.md)
 
 [Binary Search (Recursion)](./Binary_Search_Recursion.md)
 
+[Depth First Search(DFS)](./Depth_First_Search.md)
+
+[Breadth First Search(BFS)](./Breadth_First_Search.md)
 
 ## Remaining
 
