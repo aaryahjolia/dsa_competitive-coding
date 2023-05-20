@@ -28,6 +28,15 @@ void preorder(Node* root)
     preorder(root->right);
 }
 ```
+## Time and Space Complexity :
+
+For both the cases,
+* Time Complexity: O(n)  
+* Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/251b1a51-5390-4b9b-bcf3-dd5f27879858
 
 ## Iterative Approach
 ### Algorithm :
@@ -61,6 +70,10 @@ void preorderIterative(Node* root)
 For both the cases
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/ee44087a-933a-454e-ae91-e53a1e2328b9
 
 ### Next Step
 
