@@ -1,0 +1,83 @@
+// Popular Interview Question: How to implement Queue from Stack
+
+// SOLUTION
+
+Queue follows the principle of FIFO, whereas Stack follows the principle of LIFO
+Hence because of this fundamental difference, we can easily pop an element from stack, but pushing it can get tricky.
+
+// BASIC IDEA
+
+
+POP FROM QUEUE: Pop the the top element of stack
+st.pop();
+
+PUSH INTO QUEUE: Push the element at the bottom of the stack(not at the top)
+void push_bottom(stack<int> &s, int d){ 
+//base case
+    if(s.empty()){
+        s.push(d);
+        return;
+    }
+
+//recursive case
+    int top_element = s.top();
+    s.pop();
+    push_bottom(s,d);
+    s.push(top_element);
+}
+
+// T(n) = T(n-1) + c  => O(n)
+
+// COMPLETE IMPLEMENTATION OF QUEUE USING A SINGLE STACK
+#include<iostream>
+#include<stack>
+using namespace std;
+
+void push_bottom(stack<int> &s, int d){ // T(n) = T(n-1) + c  => O(n)
+//base case
+    if(s.empty()){
+        s.push(d);
+        return;
+    }
+
+//recursive case
+    int top_element = s.top();
+    s.pop();
+    push_bottom(s,d);
+    s.push(top_element);
+}
+
+class Queue{
+    public:
+    stack<int> s1;
+
+
+    void push(int d){ // O(n) { WE HAD TO COMPROMISE ON PUSH }
+        push_bottom(s1,d);
+    }
+    void pop(){ // O(1)
+        s1.pop();
+    }
+    int front(){ // O(1)
+        return s1.top();
+    }
+    bool empty(){
+        return !s1.size();
+    }
+    int size(){
+        return s1.size();
+    }
+};
+
+int main(){
+    Queue q;
+    for(int i=0;i<5;i++) q.push(i+1);
+
+    cout<<"Q: ";
+    while(!q.empty()){
+        cout<<q.front()<<" ";
+        q.pop();
+    }cout<<endl;
+
+return 0;
+}
