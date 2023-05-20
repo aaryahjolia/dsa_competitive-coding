@@ -8,7 +8,7 @@ This traversal method visits the root node last, hence the name. We go through t
 
 Postorder Traversal : 
 ```
-1 4 7 6 3 10 13 14 10 8
+1 4 7 6 3 13 14 10 8
 ```
 
 ## Recursive Approach :
@@ -28,6 +28,15 @@ void postorder(Node* root)
     cout << root->data << " ";
 }
 ```
+## Time and Space Complexity :
+
+For both the cases,
+* Time Complexity: O(n)  
+* Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/a8f4fa9d-d164-4075-b7f7-0c32f042c5d0
 
 ## Iterative Approach :
 ### Algorithm :
@@ -71,9 +80,13 @@ public:
 ```
 ## Time and Space Complexity :
 
-For both the cases
+For both the cases,
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/b05d8ddc-19e0-44fa-a11f-12d6bee03564
 
 ### Next Step
 
