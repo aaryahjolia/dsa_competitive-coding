@@ -32,6 +32,9 @@ using namespace std;
 				ei--;
 			}
 		}
+	  for (int i=0; i<arr.length; i++) {
+            cout<<arr[i];
+        	}
         }
 int  main(){
   int arr[] = {0,1,0,1,1,0,1,0,0,1};
