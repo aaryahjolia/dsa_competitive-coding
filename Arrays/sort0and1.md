@@ -3,7 +3,9 @@
 ```steps
 step 0; loop is runnig when (si < ei);
 step 1: find the start index(si) and ending index(ei) 
-step 2: if start index =0 then, si++ and ending index, ei = 1, ei--;
+		starting index initilize with index number 0, and 
+		ending index initilize with size of an array,
+step 2: if start index ==0 then, si++ and ending index, ei = 1, ei--;
 step 3: if start index =1 and ending index =0 , then swap (si,ei);
 ```
 ---
