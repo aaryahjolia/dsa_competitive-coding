@@ -11,7 +11,7 @@
 4) Get  neighbour nodes and perform above steps recursively for each node deeply/depthly if node is unvisited.
 
 
-Code:
+## Code
 ```cpp
 void dfst(int node, vector<int>adj[], vector<int> &vis, vector<int> &dfs){
     vis[node]=1;

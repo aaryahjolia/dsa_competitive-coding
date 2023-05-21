@@ -16,7 +16,7 @@
 
 -> Now since the work of the 1st node is done, we will pop out this node from the queue. Now, this process goes on until the queue is not empty.
 
-Code: (For Undirected Graph)
+## Code: (For Undirected Graph)
 ```cpp
 // Assuming inputs are taken in adjacency list
 vector<int> adj[n+1];
@@ -44,7 +44,7 @@ while(!q.empty()){
 return bfs;
 ```
 
-### Complexities:
+## Complexities
 
 -> Time Complexity : O(N + E)
 
