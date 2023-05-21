@@ -1,0 +1,16 @@
+//This is the code for finding the height of the tree
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        //If the root is null
+        if(root == null){
+            return 0;
+        }
+        //Traversing recursively through the left nodes
+        int left = maxDepth(root.left);
+        //Traversing recursively through the right node
+        int right = maxDepth(root.right);
+        // 1 is added because root node should also be counted
+        return 1 + Math.max(left, right);
+    }
+}

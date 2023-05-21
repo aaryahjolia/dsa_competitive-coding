@@ -1,8 +1,12 @@
 ## Description 
 Searching peak element in the mountain array using binary search 
 
+
+
 ## Code
 ```cpp
+
+
 
 #include <bits/stdc++.h>
 using namespace std;
