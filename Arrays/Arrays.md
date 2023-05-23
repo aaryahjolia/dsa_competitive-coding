@@ -1,7 +1,9 @@
-##Arrays
+#Arrays
+
 An array is a data structure that stores a fixed-size sequence of elements of the same type. It provides a way to organize and access multiple values using a single variable. Each element in the array is assigned a unique index, starting from 0, which allows for efficient retrieval and modification of values.
 
-##Array Operations
+#Array Operations
+
 Arrays support various operations, including:
 
 Initialization: Creating an array and assigning initial values.
@@ -14,7 +16,8 @@ Sorting: Arranging the elements in a specific order.
 Length: Determining the number of elements in the array.
 These operations allow for efficient manipulation and retrieval of data stored in arrays.
 
-##Types of Arrays
+#Types of Arrays
+
 Arrays can be categorized into different types based on their characteristics and functionality. Some common types include:
 
 One-dimensional Arrays: Also known as a flat array, it is the simplest form of an array where elements are arranged in a linear fashion.
