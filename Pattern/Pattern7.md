@@ -8,8 +8,7 @@ In this code you will find how you can make Hour-glass Pattern by using while lo
 using namespace std;
   
 // Function definition
-void pattern(int rows_no)
-{
+void pattern(int rows_no){
     //code for printing first invert number pyramid
     int row = 1;
     while(row<=rows_no){
@@ -53,8 +52,7 @@ void pattern(int rows_no)
 }
   
 // Driver code
-int main()
-{
+int main(){
     // taking rows value from the user
     int rows_no = 7;
   
