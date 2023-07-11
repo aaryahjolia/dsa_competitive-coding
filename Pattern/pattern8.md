@@ -1,3 +1,4 @@
+Printing the inverted triangle pattern using for loop.
 
 #include <iostream>
 using namespace std;
