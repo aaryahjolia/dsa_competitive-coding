@@ -5,17 +5,19 @@ The bitwise shift operations are used to move the individual bits of a binary nu
     The bitwise left shift operation moves all the bits of a binary number to the left by a specified number of positions. The leftmost bits that are shifted out are discarded, and the rightmost bits are filled with zeros.
     
     For example, if we perform a left shift of 2 positions on the binary number 00101110, the result will be:
-    
-    Original binary number: 00101110 <br>
+    ```cpp
+    Original binary number: 00101110 
     Left shift by 2:        10111000
+    ```
 
 2. **Bitwise Right Shift (>>)**:
     The bitwise right shift operation moves all the bits of a binary number to the right by a specified number of positions. The rightmost bits that are shifted out are discarded, and the leftmost bits are filled based on the sign bit (for signed integers) or with zeros (for unsigned integers).
     
     For example, if we perform a right shift of 3 positions on the binary number 11011010, the result will be:
-    
-    Original binary number: 11011010 <br>
+    ```cpp
+    Original binary number: 11011010 
     Right shift by 3:       00011011
+    ```
 
 ## Code:
 ```cpp
