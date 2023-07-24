@@ -19,7 +19,7 @@ If A=10100, then
 using namespace std;
 int main(){
   int a=5, b=~a;
-  cout<<c<<endl;   //NOT of a
+  cout<<b<<endl;   //NOT of a
   return 0;
 }
 ```
