@@ -5,13 +5,13 @@ In this operation, if at least one of the input bits is 1, the resulting bit wil
 
 Truth table for **Bitwise OR** Operation: <br>
 <p align="center">
-  <img src="https://github.com/Ashutosh0120/dsa_competitive-coding-GSSOC-2023/assets/24804042/b4046a66-c1f5-4a91-b52e-5527016c654c" alt="Image">
+  <img src="https://github.com/Ashutosh0120/dsa_competitive-coding-GSSOC-2023/assets/24804042/2dfb1b8c-b0dc-4e06-ac15-d8ebab65b3d4" alt="Image">
 </p>
 
 Example: <br>
 If A=10100, B=10101, then
 <p align="center">
-  <img src="https://github.com/Ashutosh0120/dsa_competitive-coding-GSSOC-2023/assets/24804042/b24b6548-fd91-4d77-8b0d-a280f1983cec" alt="Image">
+  <img src="https://github.com/Ashutosh0120/dsa_competitive-coding-GSSOC-2023/assets/24804042/8176525d-5180-4d70-8bf1-42e72db27b8d" alt="Image">
 </p>
 
 ## Code:
