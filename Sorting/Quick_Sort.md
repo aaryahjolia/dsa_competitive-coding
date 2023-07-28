@@ -15,7 +15,7 @@ int partition(int ar[],int low,int high){
     int j=high;
 
     // Looping till i and j don't cross each other 
-    while(i<j){
+    while(i<=j){
         // Looping to find biggest element from starting index
         while(ar[i]<=pivot){
             i++;
@@ -62,7 +62,7 @@ int main(){
         cout<<ar[i]<<" ";
     }
     cout<<endl;
-    sort(ar,0,size);
+    sort(ar,0,size-1);
     cout<<"After sort : "<<endl;
     for(int i=0;i<size;i++){
         cout<<ar[i]<<" ";
@@ -73,7 +73,7 @@ return 0;
 
 ```
 ## Run Code
-https://ide.geeksforgeeks.org/dcec7868-8163-4dce-91b8-f2ba22c9f10e
+https://ide.geeksforgeeks.org/online-cpp-compiler/501c6951-04c3-45e1-be71-82434c924fce
 
 ## Complexities
 ### Time complexity   : 

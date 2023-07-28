@@ -3,10 +3,11 @@
 ## Some Common Terms
 1. **Node/Vertex**: A node (or vertex) of a graph is one of the objects that are connected together.
 2. **Edges**: It is one of the connections between the nodes (or vertices) of the network.
-3. **Path**: A sequence of node of vertex such that none of the node is repeated or visited twice in the graph.
-4. **Cyclic**: If the graph contains a cycle (We can come back to same node after traversing the graph is called a cyclic graph). The opposite of a cyclic graph is an acyclic graph.
-5. **Weight / Cost**: If the edge is assigned a numerical value, The value is called the edge's weight or cost.
-6. **Degree**: The number of edges connected with neighbouring nodes.
+3. **Edge Weight**: Weight assigned to the edge is called edge weight. (Assume 1 if no edge weight is given).
+4. **Path**: A sequence of node of vertex connected with each other such that none of the node is repeated or visited twice in the graph.
+5. **Cyclic**: If the graph contains a cycle (We can come back to same node after traversing the graph is called a cyclic graph). The opposite of a cyclic graph is an acyclic graph.
+6. **Weight / Cost**: If the edge is assigned a numerical value, The value is called the edge's weight or cost.
+7. **Degree**: The number of edges connected with neighbouring nodes.
 
 -> **IMP**: Sum of Degrees = 2 * No. of Edges
 
