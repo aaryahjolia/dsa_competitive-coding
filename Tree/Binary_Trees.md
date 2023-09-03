@@ -9,18 +9,25 @@
 ## Initialise a Binary Tree in C++
 
 ```cpp
-class Node{
-    public:
-    int data;
-    Node* left;
-    Node* right;
+class Node {
+public:
+    int data;    // Data value of the node
+    Node* left;  // Pointer to the left child node
+    Node* right; // Pointer to the right child node
 
-    Node(int value){
+    // Constructor
+    Node(int value) {
         this->data = value;
         this->left = this->right = NULL;
     }
 };
 ```
+## Time and Space Complexity :
+
+For both the cases
+* Time Complexity: O(1)  
+* Space Complexity: O(1)
+
 ### Run Code
 
 https://ide.geeksforgeeks.org/9721e25e-94d6-4f3a-89be-133386753efc
