@@ -1,0 +1,36 @@
+#INBUILT SORT IN C++ (ESSENTIAL FOR COMPETITIVE PROGRAMMING)
+
+THEORY
+
+SYNTAX
+#include<algorithm>
+void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);  
+
+first: An random access iterator pointing to the first element in the range to be sorted.
+
+last: An random access iterator pointing to the past last element in the range to be sorted.
+
+comp: A user-defined binary predicate function that accepts two arguments and returns true if the two arguments are in order and false otherwise. It follows the strict weak ordering to order the elements.
+
+COMPARATOR FUNCTION
+The comparator function takes two arguments and contains logic to decide their relative order in sorted output. 
+The idea is to provide flexibility so that sort() can be used for any type (including user defined types) and can be used to obtain any desired order (increasing, decreasing or any other).
+
+Lets say we need to sort the students based on marks in ascending order. The comparator function will look like:
+int comparator(const void *p, const void *q)
+{
+	int l = ((struct Student *)p)->marks;
+	int r = ((struct Student *)q)->marks;
+	return (l - r);
+}
+
+
+
+EXAMPLE
+  vector<int> myvector (myints, myints+8);        
+  sort (myvector.begin(), myvector.begin()+4); 
+  
+TIME COMPLEXITY
+O(nlogn)
+
+
