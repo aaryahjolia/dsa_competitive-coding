@@ -3,7 +3,6 @@ In this code you will find how you can make * pattern by using while loop
 
 ## Code 
 ```cpp
-
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -16,6 +15,7 @@ class Solution {
    for (int i = 1; i <= N/2; i++)
    {
        string temp;
+       // For 1st N/2 lines
        for (int j = 1; j <= i - 1; j++)
        {
            temp+=" ";
@@ -26,13 +26,14 @@ class Solution {
            temp+=" ";
        }
        temp+="*";
-       for (int j = 1; j <= i - 1; j++)
-       {
-           temp+=" ";
-       }
+        // for (int j = 1; j <= i - 1; j++)
+        // {
+        //     temp+=" ";
+        // }
        space -= 2;
        ans.push_back(temp);
    }
+   // For last N/2 lines
    space = N/2;
    for (int i = 1; i <= N/2; i++)
    {
