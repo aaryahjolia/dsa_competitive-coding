@@ -28,6 +28,16 @@ void inorder(Node* root)
     inorder(root->right);
 }
 ```
+## Time and Space Complexity :
+
+For both the cases,
+* Time Complexity: O(n)  
+* Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/c694c7da-13b5-46b6-a626-704a30ef588a
+
 
 ## Iterative Approach :
 ### Algorithm :
@@ -43,7 +53,10 @@ void inorder(Node* root)
 ```cpp
 class Solution {
 public:
-    vector<int> inorderTraversal(Node* root) {
+    // vector<int> inorderTraversal(Node* root) {  
+    // **There is no need of "vector<int>" return type because this function simply print the node data not store in vector**
+
+    void inorderTraversal(Node* root) {
         stack<Node*> stck;
         while(root || !stck.empty()){
             while (root) {
@@ -63,6 +76,10 @@ public:
 For both the cases,
 * Time Complexity: O(n)  
 * Space Complexity: O(n)
+
+### Run Code
+
+https://ide.geeksforgeeks.org/online-cpp-compiler/7feaac4b-03c5-4d17-a004-83a1de26b0f7
 
 ### Next Step
 
