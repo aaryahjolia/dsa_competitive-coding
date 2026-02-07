@@ -22,5 +22,3 @@
 3. Bucket Sort
 
 4. Shell Sort
-
-### Open an Issue if you found that some other sorting technique(s) is remaining/missed.

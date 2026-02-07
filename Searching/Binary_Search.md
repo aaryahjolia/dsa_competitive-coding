@@ -59,9 +59,6 @@ return 0;
 }
 ```
 
-## Run Code
-https://ide.geeksforgeeks.org/1a4dc899-22eb-45c6-9381-3b67a530be81
-
 ## Complexities
 ### Time complexity   : 
 Best Case  : O(1)  

@@ -72,8 +72,6 @@ return 0;
 }
 
 ```
-## Run Code
-https://ide.geeksforgeeks.org/online-cpp-compiler/501c6951-04c3-45e1-be71-82434c924fce
 
 ## Complexities
 ### Time complexity   : 

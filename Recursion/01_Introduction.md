@@ -10,8 +10,7 @@ The space used in the stack is called the stack space.
 The specified condition on which the recursive function stops calling itself is called the Base condition.
 
 Recursion Tree:  
-Function calls are represented in form of smaller functions. 
-![Recursion Tree Image](https://media.geeksforgeeks.org/wp-content/uploads/20210608083944/img-300x172.PNG)
+Function calls are represented in form of smaller functions in a tree structure, where each node represents a function call and branches represent subsequent recursive calls.
 
 Main keywords:
 1. Recursion definition

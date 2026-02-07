@@ -87,9 +87,6 @@ return 0;
 
 ```
 
-## Run Code
-https://ide.geeksforgeeks.org/online-cpp-compiler/d8f82a08-6f9c-45e4-96b7-6345cc697724
-
 ## Complexities
 ### Time complexity   : 
 Best Case  : O(n)  

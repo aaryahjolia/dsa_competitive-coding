@@ -53,8 +53,6 @@ int main(){
 return 0;
 }
 ```
-## Run Code
-https://ide.geeksforgeeks.org/431352cf-cae0-4cf1-beaa-df02893dd384
 
 ## Complexities
 ### Time complexity   : 

@@ -21,9 +21,6 @@ class Node{
     }
 };
 ```
-### Run Code
-
-https://ide.geeksforgeeks.org/9721e25e-94d6-4f3a-89be-133386753efc
 
 ### Next Step
 
