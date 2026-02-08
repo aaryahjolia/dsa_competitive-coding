@@ -1,24 +1,29 @@
-## Description 
-Vector are also called as dynamic arrays. It work like arrays and it is part of containers.
+# Description
 
-## Different Ways to Initialise a vector  
+Vector are also called as dynamic arrays. It work like arrays and it is part of containers.
+The main difference between vector and array is that vector can be resized dynamically.
+
+## Different Ways to Initialise a vector
 
 ### Note : Vectors need an additional include.
+
 ```cpp
 #include<vector>
 ```
+
 But Everything will be included when we include <bits/stdc++.h>, so no need to import vector if we import all modules.
 
-### Supported Datatypes : 
+### Supported Datatypes :
+
 char, uchar, short, ushort, int, uint, float, long, and ulong
 
-### 1. 0 sized vector  
+### 1. 0 sized vector
 
 ```cpp
 // Creates a zero sized vector of int
 vector<int> name;
 ```
- 
+
 ### 2. n-sized vector
 
 ```cpp

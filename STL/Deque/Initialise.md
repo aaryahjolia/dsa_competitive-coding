@@ -1,24 +1,32 @@
-## Description 
+## Description
+
 Deque also known as double-ended queues, are indexed sequence containers part of the STL. The benefit of a deque is that it has the ability to expand and contract at both the ends (front and back)
 
-## Different Ways to Initialise a deque  
+#### The main difference between deque and vector is that deque is implemented as a doubly linked list and vector is implemented as a dynamic array.
+
+#### Operations in deque is similar to the list.
+
+## Different Ways to Initialise a deque
 
 ### Note : deque need an additional include.
+
 ```cpp
 #include<deque>
 ```
+
 But Everything will be included when we include <bits/stdc++.h>, so no need to import vector if we import all modules.
 
-### Supported Datatypes : 
+### Supported Datatypes :
+
 int, char, string , etc.
 
-### 1. 0 sized deque  
+### 1. 0 sized deque
 
 ```cpp
 // Creates a zero sized deque of int
 deque<int> name;
 ```
- 
+
 ### 2. n-sized deque
 
 ```cpp
