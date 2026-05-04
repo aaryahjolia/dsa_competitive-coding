@@ -138,3 +138,37 @@ We’ve learned the basics of how to scale and protect a business:
 2.  **Low-Level Design (LLD):** Focuses on the micro view. It's how you actually write the code, how you define classes, which design patterns you use, and how logic is structured internally.
 
 By mastering both, you can build systems that are not only powerful and scalable but also clean and easy to maintain!
+
+---
+
+## Technical Deep Dive
+
+A simple single server setup is shown below:
+
+![Simple Architecture with DB](./assets/images/Simple%20Architecture%20with%20DB.png)
+
+1. Users access websites through domain names, such as `www.mysite.com`. Usually, the Domain Name System (DNS) is a paid service provided by 3rd parties and not hosted by our servers.
+2. An Internet Protocol (IP) address is returned to the browser or mobile app.
+3. Once the IP address is obtained, Hypertext Transfer Protocol (HTTP) requests are sent directly to your web server.
+4. The web server returns HTML pages or a JSON response for rendering.
+
+### Traffic Sources
+
+The traffic to your web server comes from two sources: web applications and mobile applications.
+
+- **Web application:** it uses a combination of server-side languages (Java, Python, etc.) to handle business logic, storage, etc., and client-side languages (HTML and JavaScript) for presentation.
+- **Mobile application:** HTTP is the communication protocol between the mobile app and the web server. JavaScript Object Notation (JSON) is a commonly used API response format to transfer data due to its simplicity.
+
+### Scaling Beyond One Server
+
+With the growth of the user base, one server is not enough. We need multiple servers: one for web/mobile traffic, and another for the database. Separating the web/mobile traffic layer (web tier) from the database layer (data tier) allows them to be scaled independently.
+
+Here is a quick map of where each topic is covered in this series:
+
+| Topic                                            | File                                    |
+| ------------------------------------------------ | --------------------------------------- |
+| Vertical and horizontal scaling                  | `02_Scaling.md`                         |
+| Load balancer                                    | `03_Load Balancer.md`                   |
+| Database replication (master-slave architecture) | `06_Database Sharding.md`               |
+| Cache                                            | `07_Caching.md`                         |
+| CDN (Content Delivery Networks)                  | `09_CDN (Content Delivery Networks).md` |

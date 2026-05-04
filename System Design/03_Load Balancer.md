@@ -4,6 +4,21 @@ So we already know that a server is basically just a computer that takes a reque
 
 Now you have a new problem. If you have 10 servers, how do you decide which request goes to which server? You don't want one server doing all the work while the other 9 are just chilling. Spreading this work out evenly is what we call **Load Balancing**.
 
+A load balancer evenly distributes incoming traffic among web servers that are defined in a load-balanced set.
+
+## How a Load Balancer Works
+
+![Load Balancer Simple Architecture](./assets/images/Load%20Balancer%20Simple%20Architecture.png)
+
+<!-- Credits: Alex Xu - System Design Interview -->
+
+Users connect directly to the load balancer's public IP, not to the web servers themselves. The web servers are completely hidden from the outside world. For security, the load balancer talks to the web servers using **private IPs**, which are only reachable within the same internal network and can't be accessed over the internet.
+
+This setup also fixes two big reliability problems:
+
+- **Server goes down?** No problem. If web server 1 goes offline, all traffic automatically reroutes to web server 2. The site stays up. A new healthy server can then be added to the pool to share the load again.
+- **Traffic explodes?** Also no problem. You just add more servers to the pool and the load balancer picks them up automatically, no extra configuration needed.
+
 ## The Hashing Trick
 
 How do we actually balance the load? A basic way is to use a bit of math. Every request usually comes with a unique ID (like a username or a session ID). Let's call it a request ID.

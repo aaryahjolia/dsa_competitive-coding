@@ -58,13 +58,26 @@ Normally, it's hard to add or remove shards once they're set up. If you start wi
 
 ---
 
-## What if a Shard Fails? (Master-Slave Architecture)
+## Database Replication (Master-Slave Architecture)
 
-If a shard goes down due to a power outage or a crash, you lose that piece of the pizza. To prevent this, we use **Master-Slave Replication**:
+Database replication is used to keep copies of your data across multiple servers, usually through a **master/slave** relationship. The original is called the master, and the copies are called slaves.
 
-- **The Master:** All "Write" requests (creating/updating data) go here. It is the single source of truth.
-- **The Slaves:** Multiple "Slaves" constantly copy the Master. "Read" requests are distributed across these slaves to balance the load.
-- **Failover:** If the Master fails, the Slaves hold an election to choose a new Master, and the system keeps running.
+The split is pretty straightforward: the **master** handles all write operations (inserts, updates, deletes), while the **slaves** handle read operations by staying in sync with the master. Since most applications read data far more often than they write it, you'll typically see more slave databases than master ones in a real system.
+
+![Database Master-Slave Architecture](./assets/images/Database%20Master-Slave%20Architecture.png)
+
+<!-- Credits: Alex Xu - System Design Interview -->
+
+### Why Bother Replicating?
+
+- **Better performance:** Writes go to the master, reads spread across slaves. More queries run in parallel, and the whole system feels faster.
+- **Reliability:** If a server gets wiped out (hardware failure, natural disaster, whatever), your data still lives on the other replicas. No data loss.
+- **High availability:** If one database goes offline, the others can serve requests. The system keeps running even during failures.
+
+### What Happens When Something Goes Down?
+
+- **A slave goes offline:** If there's only one slave and it goes down, reads temporarily fall back to the master until a replacement slave is spun up. If there are multiple slaves, reads just get redirected to the remaining healthy ones.
+- **The master goes offline:** One of the slaves gets promoted to become the new master. All writes now go there. This sounds simple, but in practice it can get messy. The promoted slave might not have the very latest data, so recovery scripts may need to run to fill in the gaps. More advanced setups like multi-master or circular replication exist but are significantly more complex.
 
 ## Wrap Up
 

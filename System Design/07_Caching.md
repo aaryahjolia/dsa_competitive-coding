@@ -12,39 +12,52 @@ How can we make this faster? Caching is the answer.
 
 ### The Big Idea: Storage over Latency
 
-Caching is all about **reducing repeatable work through storage**. Instead of going to the database every single time, we store the result in a local, super-fast memory.
+A cache is a temporary, high-speed storage layer that holds the results of expensive operations or frequently accessed data. Instead of hammering the database repeatedly for every web page load, the server checks the cache first. 
 
 - If we query a local cache, that 10ms trip to the DB might drop to **1ms**.
 - **New Total Time:** $100 + 1 + 1 + 100 = 202ms$ (about 10% faster).
 
 We can even cache on the **client side**. If the user puts their phone down and comes back a minute later, we can show them the data we already saved locally. This is lightning fast (virtually 0ms extra latency).
 
+#### The Cache Tier & Read-Through Strategy
+By utilizing a dedicated **Cache Tier**, you significantly improve application performance, reduce database workloads, and allow the cache to scale independently of the database. Most cache servers are also easy to interact with via common programming language APIs.
+
+A very common approach is the **Read-through strategy**:
+1. The server receives a request and checks the cache. 
+2. If the data is there (**cache hit**), it returns it immediately. 
+3. If not (**cache miss**), the server queries the database, saves the result in the cache for next time, and returns the response.
+
 > [NOTE]
 > Why not put the _entire_ database in the cache?
-> Cache memory is expensive. It's great for GBs of data, but for TBs or PBs, it's just not practical. Instead, we keep a "chunk" of the most frequently used data in the cache to get the most bang for our buck.
+> Cache memory is expensive. It's great for GBs of data, but for TBs or PBs, it's just not practical. Instead, we keep a "chunk" of the most frequently used data in the cache to get the best out of our spendings.
 
 ---
 
-## Cache Policies: What stays and what goes?
+## Considerations for Using a Cache
 
-Since cache memory is limited, we need rules (policies) to manage it.
+When introducing a cache system, keep these key points in mind:
 
-### 1. Management: How do I handle writes?
+### 1. When to Use It
+Caches shine in **read-heavy, write-infrequent** scenarios. Because cache data is stored in volatile memory, it's not a substitute for a persistent database. If the cache server restarts, all data is lost. Always save important data in persistent stores.
 
-When data in the DB changes, the cache is now "stale" (outdated). We have to decide:
+### 2. Consistency & Expiration
+When data in the database changes, the cache becomes "stale". Keeping the two in sync is known as maintaining **Consistency**, which can be challenging in large, multi-region systems (like Facebook's Memcache setup).
+*   **Expiration Policy:** You should implement an expiration date (TTL) for cached items. Without it, data stays in memory permanently. 
+    *   *Too short:* The system constantly reloads data from the database.
+    *   *Too long:* Users see stale data.
 
-- Do we update the cache and DB at the same time?
-- Or do we update the cache later? (This leads to **Eventual Consistency**, where the cache might be slightly behind the "truth" for a few seconds/minutes.)
+### 3. Mitigating Failures (SPOF)
+A single cache server is a Single Point of Failure (SPOF). If it crashes, your entire system might halt under the sudden database load. To prevent this, use **multiple cache servers** distributed across different data centers and **overprovision memory** (add a percentage buffer) to handle unexpected spikes in usage.
 
-### 2. Eviction: Who gets kicked out?
+### 4. Eviction: Who gets kicked out?
 
-When the cache is full and something new (like a viral video) needs to come in, we have to delete something else.
-Common algorithms include:
+When the cache is full and new items need to be added, existing items must be removed. This is called **Cache Eviction**. Common policies include:
 
-- **LRU (Least Recently Used):** Kick out the data that hasn't been touched in the longest time.
-- **LFU (Least Frequently Used):** Kick out the data that is accessed the least often.
+- **LRU (Least Recently Used):** The most popular method. Kicks out data that hasn't been touched in the longest time.
+- **LFU (Least Frequently Used):** Kicks out data that is accessed the least often.
+- **FIFO (First In, First Out):** Removes the oldest items first, regardless of access frequency.
 
-### The Danger: Thrashing
+#### The Danger: Thrashing
 
 Poor cache policies can actually hurt performance. This is called **Thrashing**.
 Imagine your cache can only hold 3 items, but your requests come in a sequence like $1, 2, 3, 4, 1, 2, 3...$
