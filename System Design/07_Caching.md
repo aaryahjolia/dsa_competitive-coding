@@ -12,7 +12,7 @@ How can we make this faster? Caching is the answer.
 
 ### The Big Idea: Storage over Latency
 
-A cache is a temporary, high-speed storage layer that holds the results of expensive operations or frequently accessed data. Instead of hammering the database repeatedly for every web page load, the server checks the cache first. 
+A cache is a temporary, high-speed storage layer that holds the results of expensive operations or frequently accessed data. Instead of hammering the database repeatedly for every web page load, the server checks the cache first.
 
 - If we query a local cache, that 10ms trip to the DB might drop to **1ms**.
 - **New Total Time:** $100 + 1 + 1 + 100 = 202ms$ (about 10% faster).
@@ -20,11 +20,21 @@ A cache is a temporary, high-speed storage layer that holds the results of expen
 We can even cache on the **client side**. If the user puts their phone down and comes back a minute later, we can show them the data we already saved locally. This is lightning fast (virtually 0ms extra latency).
 
 #### The Cache Tier & Read-Through Strategy
+
 By utilizing a dedicated **Cache Tier**, you significantly improve application performance, reduce database workloads, and allow the cache to scale independently of the database. Most cache servers are also easy to interact with via common programming language APIs.
 
+Following code snippet shows typical memcached APIs:
+
+```javascript
+SECONDS = 1;
+cache.set("myKey", "any random value", 3600 * SECONDS);
+cache.get("myKey");
+```
+
 A very common approach is the **Read-through strategy**:
-1. The server receives a request and checks the cache. 
-2. If the data is there (**cache hit**), it returns it immediately. 
+
+1. The server receives a request and checks the cache.
+2. If the data is there (**cache hit**), it returns it immediately.
 3. If not (**cache miss**), the server queries the database, saves the result in the cache for next time, and returns the response.
 
 > [NOTE]
@@ -38,15 +48,19 @@ A very common approach is the **Read-through strategy**:
 When introducing a cache system, keep these key points in mind:
 
 ### 1. When to Use It
-Caches shine in **read-heavy, write-infrequent** scenarios. Because cache data is stored in volatile memory, it's not a substitute for a persistent database. If the cache server restarts, all data is lost. Always save important data in persistent stores.
+
+Caches shine in **read-heavy, write-infrequent** scenarios. Consider using cache when data is read frequently but modified infrequently. Since cached data is stored in **volatile memory**, a cache server is not ideal for persisting data. For instance, if a cache server restarts, all the data in memory is lost. Thus, important data should be saved in persistent data stores.
 
 ### 2. Consistency & Expiration
+
 When data in the database changes, the cache becomes "stale". Keeping the two in sync is known as maintaining **Consistency**, which can be challenging in large, multi-region systems (like Facebook's Memcache setup).
-*   **Expiration Policy:** You should implement an expiration date (TTL) for cached items. Without it, data stays in memory permanently. 
-    *   *Too short:* The system constantly reloads data from the database.
-    *   *Too long:* Users see stale data.
+
+- **Expiration Policy:** It is a good practice to implement an expiration policy. Once cached data is expired, it is removed from the cache. Without an expiration policy, cached data will be stored in memory permanently.
+  - _Too short:_ This will cause the system to reload data from the database too frequently.
+  - _Too long:_ The data can become stale.
 
 ### 3. Mitigating Failures (SPOF)
+
 A single cache server is a Single Point of Failure (SPOF). If it crashes, your entire system might halt under the sudden database load. To prevent this, use **multiple cache servers** distributed across different data centers and **overprovision memory** (add a percentage buffer) to handle unexpected spikes in usage.
 
 ### 4. Eviction: Who gets kicked out?
