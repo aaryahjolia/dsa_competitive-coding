@@ -15,7 +15,7 @@ A service simply says, "Hey everyone, something just happened here!"
 - Other servers (**Subscribers**) are listening to this Event Bus. They consume the event, check if it's relevant to them, and update their own internal state accordingly.
 - The core philosophy: A service publishes an event when it thinks others might need to know something, rather than specifically asking another service to do something.
 
-![EDA](./assets/images/EDA.svg)
+![EDA](./assets/images/eda.svg)
 
 ### The "Headshot" Game Server Example
 

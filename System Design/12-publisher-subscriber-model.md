@@ -16,7 +16,7 @@ Imagine a system with a simple flow:
 4.  But then **S2** gets fancy. It needs to talk to **S3** and **S4** to get more data.
 5.  **S2** sits there, twiddling its thumbs, waiting for S3 and S4 to respond. This is **Strong Coupling**.
 
-![Publisher Subscriber Model](./assets/images/Pub%20Sub%20Model%20-%20Request%20Response.png)
+![Publisher Subscriber Model](./assets/images/pub-sub-model-request-response.png)
 
 <!-- Credits: gemini -->
 
@@ -36,7 +36,7 @@ Imagine **S4** has a bad day and fails.
 
 Instead of calling each other directly, we introduce a **Message Broker** (think Kafka or RabbitMQ) – basically a high-tech bulletin board. We remove the direct dependency between S1-S2 and S1-S0.
 
-![Publisher Subscriber Model](./assets/images/Pub%20Sub%20Model.png)
+![Publisher Subscriber Model](./assets/images/pub-sub-model.png)
 
 <!-- Credits: gemini -->
 

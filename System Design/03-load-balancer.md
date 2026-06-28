@@ -8,7 +8,7 @@ A load balancer evenly distributes incoming traffic among web servers that are d
 
 ## How a Load Balancer Works
 
-![Load Balancer Simple Architecture](./assets/images/Load%20Balancer%20Simple%20Architecture.png)
+![Load Balancer Simple Architecture](./assets/images/load-balancer-simple-architecture.png)
 
 <!-- Credits: Alex Xu - System Design Interview -->
 
@@ -70,7 +70,7 @@ In consistent hashing, we still have our request IDs and we still hash them. But
 
 Now, instead of just hashing the requests, we also hash the **server IDs** themselves and place them on this same circle. We use the same hash function (or a different one, it doesn't really matter) and modulo the result by M.
 
-![Consistent Hashing Ring](./assets/images/Hashing%20-%20Final.png)
+![Consistent Hashing Ring](./assets/images/consistent-hashing-ring.png)
 
 As you can see in the image, both the servers and the requests are scattered around the circle. The rule is simple: every request travels clockwise around the circle until it hits the first server it finds. That’s the server that handles the request.
 

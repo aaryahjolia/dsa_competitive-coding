@@ -122,7 +122,7 @@ Now let's zoom in on Cassandra's architecture. It’s one thing to say "NoSQL ca
 
 Imagine a 5-node Cassandra cluster. (In the real world, hosting 5 massive nodes isn't cheap, but bear with me for this example!)
 
-![Cassandra](./assets/images/Cassandra.svg)
+![Cassandra](./assets/images/cassandra.svg)
 
 ### 1. Hashing and Load Balancing: The Great Sorter
 

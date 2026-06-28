@@ -145,7 +145,7 @@ By mastering both, you can build systems that are not only powerful and scalable
 
 A simple single server setup is shown below:
 
-![Simple Architecture with DB](./assets/images/Simple%20Architecture%20with%20DB.png)
+![Simple Architecture with DB](./assets/images/simple-architecture-with-db.png)
 
 1. Users access websites through domain names, such as `www.mysite.com`. Usually, the Domain Name System (DNS) is a paid service provided by 3rd parties and not hosted by our servers.
 2. An Internet Protocol (IP) address is returned to the browser or mobile app.
@@ -167,8 +167,8 @@ Here is a quick map of where each topic is covered in this series:
 
 | Topic                                            | File                                    |
 | ------------------------------------------------ | --------------------------------------- |
-| Vertical and horizontal scaling                  | `02_Scaling.md`                         |
-| Load balancer                                    | `03_Load Balancer.md`                   |
-| Database replication (master-slave architecture) | `06_Database Sharding.md`               |
-| Cache                                            | `07_Caching.md`                         |
-| CDN (Content Delivery Networks)                  | `09_CDN (Content Delivery Networks).md` |
+| Vertical and horizontal scaling                  | `02-scaling.md`                         |
+| Load balancer                                    | `03-load-balancer.md`                   |
+| Database replication (master-slave architecture) | `06-database-sharding.md`               |
+| Cache                                            | `07-caching.md`                         |
+| CDN (Content Delivery Networks)                  | `09-cdn.md`                             |

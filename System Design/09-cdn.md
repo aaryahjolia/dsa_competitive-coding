@@ -10,7 +10,7 @@ Imagine you have a server in **India**, and a user in the **US** wants to load y
 - The server then sends back a large HTML file, which travels all the way back across the globe.
 - **The Result:** High latency and a slow experience for the user. Even a half-second delay can cause a user to lose trust and leave.
 
-![CDN Architecture](./assets/images/CDN.png)
+![CDN Architecture](./assets/images/cdn.png)
 
 <!-- Image Credits: GeeksforGeeks -->
 
@@ -36,7 +36,7 @@ A CDN acts like a "Black Box" for static content.
 
 At a high level: when a user visits a website, the CDN server **closest to the user** will deliver static content. Intuitively, the further users are from CDN servers, the slower the website loads. For example, if CDN servers are in San Francisco, users in Los Angeles will get content faster than users in Europe.
 
-![CDN Usage](./assets/images/CDN%20Usage.png)
+![CDN Usage](./assets/images/cdn-usage.png)
 
 <!-- Credits:  https://learn.microsoft.com/en-us/azure/architecture/best-practices/cdn -->
 
@@ -63,7 +63,7 @@ At a high level: when a user visits a website, the CDN server **closest to the u
 
 The figure below shows a design after a CDN and cache layer are added:
 
-![CDN + Cache Architecture](./assets/images/CDN%20+%20Cache%20Architecture.png)
+![CDN + Cache Architecture](./assets/images/cdn-cache-architecture.png)
 
 ---
 

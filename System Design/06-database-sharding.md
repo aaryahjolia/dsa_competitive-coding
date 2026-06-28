@@ -9,17 +9,19 @@ In the database world, we call this **Partitioning**. We divide the data into sm
 Before we dive into sharding, it's important to know there are two ways to slice this pizza:
 
 1.  **Vertical Partitioning:** This is like separating the crust, the cheese, and the toppings into different boxes. You take specific **columns** (attributes) of your data and move them to different servers.
-2.  **Horizontal Partitioning (Sharding):** This is what we usually mean when we talk about sharding. You take the same "rows" of data and distribute them across multiple servers based on a **Shard Key**.
+2.  **Horizontal Partitioning (Sharding):** This is what we usually mean when we talk about sharding. It separates large databases into smaller, more easily managed parts called shards. Each shard shares the same schema, though the actual data stored on each shard is unique.
 
-### How Sharding Works
+### How Sharding Works and the Sharding Key
 
-Let's say we have 8 database servers ($S_0$ to $S_7$) and we're using `user_id` as our shard key:
+The most critical factor to consider when implementing a sharding strategy is the choice of the **sharding key** (also known as a partition key). This key consists of one or more columns that determine how data is distributed.
+
+For example, if we use `user_id` as the sharding key across 8 database servers ($S_0$ to $S_7$):
 
 - Server $S_0$ handles `user_id` 0 to 100.
 - Server $S_1$ handles `user_id` 101 to 200.
 - ...and so on.
 
-By breaking the data into these ranges, we can serve a massive amount of requests by letting each server handle its own "slice" of the user base.
+The sharding key allows the system to retrieve and modify data efficiently by routing database queries to the correct server. When choosing a sharding key, one of the most important criteria is to choose a key that distributes data and request volume evenly.
 
 > [IMPORTANT]
 > These are **database servers**, not your typical stateless application servers. While an app server can be easily swapped out, a database server holds the "truth" of your data. It can't afford any "hiccups."
@@ -43,18 +45,25 @@ To make it even faster, you can create **Indexes** on each shard. If you're look
 
 ## The Catch: Sharding Problems
 
-Sharding sounds great, but it comes with some serious headaches:
+Sharding is a powerful scaling technique, but it introduces several complexities:
 
-### 1. The Join Problem
+### 1. Join and De-normalization
 
-If you need to join data that lives on two different shards (e.g., a "Users" shard and an "Orders" shard), you have to fetch data from both over the network and join them yourself. This is **expensive** and slow.
+Once a database has been sharded across multiple servers, performing join operations across shards is difficult and inefficient because you must retrieve data from different machines over the network. A common workaround is to **de-normalize** the database so that queries can be performed within a single table.
 
-### 2. The Scaling Bottleneck (Fixed Shards)
+### 2. Resharding Data
 
-Normally, it's hard to add or remove shards once they're set up. If you start with 8 shards and suddenly need 9, you have to move _everything_ around.
+Resharding is required when:
+1. A single shard can no longer hold more data due to rapid growth.
+2. Certain shards experience shard exhaustion faster than others due to uneven data distribution.
 
-- **Solution A: Consistent Hashing.** This is a clever math trick that minimizes data movement when servers are added/removed.
-- **Solution B: Hierarchical Sharding.** If a shard gets too full, you dynamically break that "slice" into even smaller "mini-slices." A manager tracks which request goes to which mini-slice, making the system much more flexible.
+When shard exhaustion occurs, you must update the sharding function and move data across servers.
+- **Consistent Hashing:** A commonly used technique to solve this problem by minimizing the amount of data that needs to be moved when shards are added or removed.
+- **Hierarchical Sharding:** If a shard gets too full, you dynamically split it into smaller "mini-shards."
+
+### 3. The Celebrity Problem (Hotspot Key Problem)
+
+Excessive access to a specific shard can cause server overload. For example, in social applications, if data for popular users (like Katy Perry, Justin Bieber, and Lady Gaga) ends up on the same shard, that database server will be overwhelmed with read operations. To resolve this, you may need to allocate dedicated shards for high-traffic keys, or partition them further.
 
 ---
 
@@ -64,7 +73,7 @@ Database replication is used to keep copies of your data across multiple servers
 
 The split is pretty straightforward: the **master** handles all write operations (inserts, updates, deletes), while the **slaves** handle read operations by staying in sync with the master. Since most applications read data far more often than they write it, you'll typically see more slave databases than master ones in a real system.
 
-![Database Master-Slave Architecture](./assets/images/Database%20Master-Slave%20Architecture.png)
+![Database Master-Slave Architecture](./assets/images/database-master-slave-architecture.png)
 
 <!-- Credits: Alex Xu - System Design Interview -->
 

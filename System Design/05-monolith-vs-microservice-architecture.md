@@ -14,7 +14,7 @@ A **Microservice Architecture** is like having specialized shops. You have one s
 - In technical terms, a microservice is a small, independent service that is responsible for a specific business capability. It is deployed as a separate unit and communicates with other services like tiny databases through APIs.
 - The client may not be talking to the microservices directly. There may be a gateway that talks to the microservices on behalf of the client.
 
-![Monolith vs Microservice](./assets/images/Monolithic%20VS%20Microservice.png)
+![Monolith vs Microservice](./assets/images/monolithic-vs-microservice.png)
 
 <!-- Credits: https://medium.com/startlovingyourself/microservices-vs-monolithic-architecture-c8df91f16bb4 -->
 

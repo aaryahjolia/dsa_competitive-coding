@@ -4,7 +4,7 @@ A **Single Point of Failure (SPOF)** is any part of a system that, if it fails, 
 
 Imagine you have a database and multiple servers calling it. If that one database crashes, your entire application goes dark. That database is your SPOF.
 
-![Single Point of Failure](./assets/images/SPOF.png)
+![Single Point of Failure](./assets/images/spof.png)
 
 In the image above, if the **Gateway** crashes, the whole system crashes. It doesn't matter how many servers you have behind it if nobody can reach them.
 
