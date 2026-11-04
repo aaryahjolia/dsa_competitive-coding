@@ -163,6 +163,8 @@ The traffic to your web server comes from two sources: web applications and mobi
 
 With the growth of the user base, one server is not enough. We need multiple servers: one for web/mobile traffic, and another for the database. Separating the web/mobile traffic layer (web tier) from the database layer (data tier) allows them to be scaled independently.
 
+How do we choose the database for data tier? `15-NOSQL (vs SQL).md` explains the same in detail.
+
 Here is a quick map of where each topic is covered in this series:
 
 | Topic                                            | File                                    |

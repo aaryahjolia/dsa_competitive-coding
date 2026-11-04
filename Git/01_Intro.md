@@ -1,105 +1,183 @@
-Version control system are tools that are used to keep track of changes t source code or other colections of files or folders. It helps track the history of changes to some set of documents and really sueful for collaboraton so really sueful for working with group of people on software project.
-It stores a snapshot, the state of the folder at that time. Also stores bunch of metadata like who authored the file, who made the changes or time when change was made. 
-It is useful for inidividual use as well, you can work on features while working on bugs by branches, etc.
-Version control system or Git is powerful in a way also such that, there is a unit test which was passing, but after few merges, it's failing and you dont know which merge caused this regression. Git can binary search the changes and point out to change which introduced this regression.
-Lets say a project consists of following:
+# Introduction to Git
+
+## What is version control?
+
+Version control systems are tools used to keep track of changes to source code or other collections of files and folders. They help track the history of changes to a set of documents and are especially useful for collaboration and working with a group on a software project.
+
+Git stores a snapshot: the state of a folder at a particular time. It also stores metadata, such as who authored the changes and when they were made.
+
+Version control is useful for individuals, too. You can work on features while fixing bugs by using branches.
+
+Git is also powerful when tracking down regressions. For example, a unit test may pass at first but fail after a few merges. If you do not know which change caused the regression, Git can binary-search through the changes and point to the one that introduced it.
+
+## How Git represents a project
+
+Let’s say a project consists of the following:
+
+```text
 (Root) - root directory
 |
 |- foo <- called "tree" or folder
-|   - bar.txt <- called "blob" or files
-|- info.txt <- also "blob"
+|   - bar.txt <- called "blob" or file
+|- info.txt <- also a "blob"
+```
 
-The directories are called tree, tree can contain other trees or blobs. Blobs can't contain trees. root is the root directory being tracked.
-One way to remember state is to get a snapshot of the root, then take other snapshot at interval of time, etc. basically making a linear chain.
-Git doesn't use this, it uses directed acyclic graph to model history.
-Snapshots are stored like following:
+Directories are called trees. A tree can contain other trees or blobs, but blobs cannot contain trees. The root is the top-level directory being tracked.
+
+One way to remember the state of a project is to take a snapshot of the root directory, then take more snapshots at intervals, making a linear chain. Git does not use only a linear chain; it uses a directed acyclic graph (DAG) to model history. Snapshots can be stored like this:
+
+```text
 O <- O <- O (feature) <- O
       |                  |
       | <- O (bugfix) <- |
-O are snapshots that points to its parent. In linear, we can only do one work at one time on root. With git's DAG, there are 2 O's simultaneously, one for bugfix and one for feature. When we merge it, the last O points to both O which means 2 parent snapshots.
+```
 
-Psuedocode for this is:
+Each `O` represents a snapshot that points to its parent. In a linear history, we can work on only one thing at a time on the root directory. With Git’s DAG, two branches can have commits at the same time: one for a bug fix and one for a feature. When we merge them, the final `O` points to both `O`s, which means it has two parent snapshots.
+
+Pseudocode for this model:
+
+```text
 type blob = array<byte>
-type tree = map<string, tree|blob> (string is directory name, maps to other directory or files)
-type commit = struct{ <- git calls commit to snapshots
-    parentCommits: array<commit>, (stored as hash)
+type tree = map<string, tree|blob>  # directory names map to other directories or files
+type commit = struct {              # Git calls snapshots "commits"
+    parentCommits: array<commit>    # stored as hashes
     author: string,
     message: string,
     snapshot: tree (root tree)
 }
+```
 
-In disk, it is stored as objects. Psuedocode:
-type object = blobl|tree|commit
-objects = map<string, object> (string is SHA-1 Hash like commit hash, object is object to store)
+## Git objects and references
+
+On disk, Git stores data as objects. Pseudocode:
+
+```text
+type object = blob|tree|commit
+objects = map<string, object> (string is a SHA-1 hash, object is the object being stored)
 
 def store(O):
-    id=SHA1(O)
-    object[id]=O
+    id = SHA1(O)
+    object[id] = O
+
 def load(id):
     return object[id]
+```
 
-SHA-1 are hexadecimal string that are 40 chars long (160 bit hash) Ex: 4af32cb...7f
-So every commit is identified by this hash, but its unreadable to human. So solution to this in git is, git maintains references, a mapping of hash to human readable name.
+SHA-1 hashes are hexadecimal strings that are 40 characters long (160-bit hashes). For example: `4af32cb...7f`.
+
+Every commit is identified by this hash, but it is not human-readable. To solve this, Git maintains references: mappings from hashes to human-readable names.
+
+```text
 references = map<string, string>
-Ex:("Fixed encoding Bug", "4af32cb...7f")
-So we can identify snapshots in history by this reference string instead of hash. References are used to point to a particular commit in the DAG.
+Example: ("Fixed encoding Bug", "4af32cb...7f")
+```
 
-Given git's design for history, the whole graph is immutable. We can add new things but can't manipulate
-anything in there. 
-References are mutable. So we can change the string name to any other commit, but we can't change hash string since for that we'll have to change the object which is not permitted.
+We can use a reference string instead of a hash to identify a snapshot in history. References point to particular commits in the DAG.
 
-At high level, git commands are just manipulation to objects or references data.
+Given Git’s design for history, the object graph is immutable: we can add new objects, but we cannot manipulate existing objects. References are mutable, though. We can change a reference to point to another commit, but we cannot change a hash string without changing the object it identifies.
 
-Commands:
-1. git init
-To initialise git repo in any root directory
-2. git help <command>
-Give info about that command i.e. git help init
-3. git status
-Provides the status of the current git repo, what files are tracked, what are not tracked, etc.
-Let's say we create a file now. we want to make a snapshot of this current content, but there's no direct command. It's because git gives you flexibility of what changes to include in next snapshot/commit. So there is something called staging area at high level, which tells git what to include in next snapshot/commit. Now, git status will say no commits but there is an untracked file.
-4. git add file.txt ('git add -A' for all files)
-Adds a file/folder to staging area where it's ready now to be commited (creating a snapshot)
-git status will now identify file to be committed
-5. git commit
-This actually creates a snapshot/commit. It'll ask for message to later identify what changes were merge or associate this commit hash with.
-Now we have a single node in our DAG with this commit.
-6. git log ('--all --graph --decorate' arguments to view it as graph, add '--oneline' to see minimal version of graph)
-It helps visualize the history or the commit graph from starting.
--> HEAD is a special pointer which points to current directory, master is the main branch which tells the latest point in DAG.
-7. git checkout <hash or 'master' or filename>
-If you give hash, it changes HEAD to that node/commit and you'll see directory at that point of commit. It changes HEAD to point at that node but master will be still at latest node. To switch HEAD to master back, git checkout master. Any uncommitted changes will not allow to checkout, you can either commit it or pass '-f' argument to force it to overwrite the content and your unsaved content will be lost.
-8. git diff hello.txt
-This compares the file between the current directory and HEAD and tells what changed in that file. You can also compare between different snapshots/commits with 'git diff 4f2a4g HEAD hello.txt'.
-9. git branch
-Shows all the branches in the git repo. Use 'git branch xyz' to create a branch. Initially, HEAD will point to master, and xyz is also at master. 'git checkout xyz' switches HEAD to xyz. Short command to create and change to branch is 'git checkout -b xyz'. (-vv argument to see all branches)
-10. git merge xyz
-If you have 2 branches like xyz and abc and you want to merge xyz in master to make it latest code, checkout to master and then run git merge xyz, by this, since xyz is ahead of master, master will move to xyz commit and head will now point to master which is same as xyz.
-git merge --abort to abort the merge and restore the state. If conflicts happens, resolve it by editing the file of what content you want to have, then run git merge --continue.
-Now, xyz and abc branch are parent of master since master contains both changes from xyz and abc and it has moved forward.
-11. git remote add <name> <url>
-To add a remote repo, use this command. name is generally kept as origin, url is remote repo url like github or gitlab. Only git remote will show remote repo configured.
-12. git push <remote> <local branch>:<remote branch>
-If we want to push local code to remote repo, we can use this command. remote is origin we named, local branch is branch name you wish to push like master and remote branch name is what you want to name that remote branch. Ex: git push origin master:master. Now git log will also show info about this remote repo.
-13. git clone <url> <folder name>
-To clone remote repo to local, use this. Folder name is optional, it will take remote repo name by default. URL is github url of repo. (--shallow command will just pull latest commit and not entire version history)
-14. git branch --set-upstream-to=<origin/master>
-If you dont want to write long git push command everytime, you can set local checked out branch to track remote master branch (Ex: origin/master). Now git push command will know to push it to origin's master branch. (Or run git push -u origin main to set upstream also)
-15. git fetch <remote> and git merge
-fetch command will fetch the changes from remote repo, giving name is optional. It will not move current HEAD to that latest fetched code, use merge command to move HEAD to that.
-16. git pull
-Shorter command to fetch changes from remote repo and change HEAD to that latest copy
-17. git rebase
-It's alternative to merging or cleaning up commits. It is NOT meant to be run from main/master branch, but always from another branch. Never rebase shared commits or code to be pushed to github. Rebase takes all code from master and merge it to current branch, flattening the git graph from 2 different graph of indivudual branch to one single line of commits.
+At a high level, Git commands manipulate objects or references.
 
-Other useful commands:
-1. git add -p file.txt
-Lets you interactively stage pieces of code instead of whole file, useful when you have to commit only certain lines.
-2. git diff --cached
-Shows what changes and lines are in staging ready to commit.
-3. git blame file.txt
-Shows what all lines are there in file, who committed it and by which commit hash
-4. git show <commit_hash>
-Shows info about that commit, message, what changed
-5. git stash
-Resets the HEAD to last commit, but any uncommited changes are not lost, they are stored somewhere. Use git stash pop to restore the uncommited changes.
+## Commands
+
+1. **`git init`**
+
+   Initializes a Git repository in the root directory.
+
+2. **`git help <command>`**
+
+   Shows information about a command. For example: `git help init`.
+
+3. **`git status`**
+
+   Shows the status of the current Git repository, including which files are tracked and which are untracked.
+
+   Let’s say we create a file and want to make a snapshot of its current contents. There is no direct command to do this because Git gives us the flexibility to choose which changes to include in the next snapshot or commit. The staging area tells Git what to include in that commit. At this point, `git status` will say there are no commits and that there is an untracked file.
+
+4. **`git add file.txt`** (or **`git add -A`** for all files)
+
+   Adds a file or folder to the staging area, where it is ready to be committed (included in a snapshot). `git status` will now show the file as ready to be committed.
+
+5. **`git commit`**
+
+   Creates a snapshot or commit. Git will ask for a message so you can later identify what changes were made or associate the commit hash with the change.
+
+   Now we have a single node in our DAG representing this commit.
+
+6. **`git log`** (with `--all --graph --decorate` to view the history as a graph; add `--oneline` for a shorter version)
+
+   Helps visualize the history or commit graph from the beginning.
+
+   `HEAD` is a special pointer to the current directory. `master` is the main branch, which identifies the latest point in the DAG.
+
+7. **`git checkout <hash or 'master' or filename>`**
+
+   If you provide a hash, Git changes `HEAD` to that commit, and you will see the directory as it was at that point. `HEAD` points to that commit, while `master` stays at its latest commit. To switch `HEAD` back to `master`, use `git checkout master`.
+
+   Uncommitted changes may prevent you from checking out another commit. You can commit them or pass the `-f` argument to force the checkout, which will overwrite the content and lose your unsaved changes.
+
+8. **`git diff hello.txt`**
+
+   Compares the file in the current directory with the version at `HEAD` and shows what changed. You can also compare different snapshots or commits with `git diff 4f2a4g HEAD hello.txt`.
+
+9. **`git branch`**
+
+   Shows all branches in the Git repository. Use `git branch xyz` to create a branch. Initially, `HEAD` points to `master`, and `xyz` points to the same commit as `master`. `git checkout xyz` switches `HEAD` to `xyz`. The shorter command to create and switch to a branch is `git checkout -b xyz`. Use the `-vv` argument to see all branches.
+
+10. **`git merge xyz`**
+
+    If you have two branches, such as `xyz` and `abc`, and want to merge `xyz` into `master`, check out `master` and run `git merge xyz`. Since `xyz` is ahead of `master`, `master` will move to the `xyz` commit, and `HEAD` will point to `master`, which is now at the same commit as `xyz`.
+
+    Use `git merge --abort` to abort the merge and restore the previous state. If conflicts happen, resolve them by editing the file to contain the content you want, then run `git merge --continue`.
+
+    Now, the `xyz` and `abc` branches are parents of `master`, since `master` contains changes from both `xyz` and `abc` and has moved forward.
+
+11. **`git remote add <name> <url>`**
+
+    Adds a remote repository. The name is generally `origin`, and the URL is the remote repository’s URL, such as GitHub or GitLab. Run `git remote` to show the configured remote repositories.
+
+12. **`git push <remote> <local branch>:<remote branch>`**
+
+    Pushes local code to a remote repository. The remote is the name you gave it (often `origin`), the local branch is the branch you want to push (such as `master`), and the remote branch is the name you want to give that branch on the remote. For example: `git push origin master:master`. Now `git log` will also show information about this remote repository.
+
+13. **`git clone <url> <folder name>`**
+
+    Clones a remote repository to your local machine. The folder name is optional; if omitted, Git uses the repository’s name by default. The URL is the repository URL, such as a GitHub URL. The `--shallow` option pulls only the latest commit, not the entire version history.
+
+14. **`git branch --set-upstream-to=<origin/master>`**
+
+    If you do not want to write the long `git push` command every time, you can set the checked-out local branch to track the remote `master` branch (for example, `origin/master`). Then `git push` will know to push it to the `master` branch on `origin`. Alternatively, run `git push -u origin main` to set the upstream as well.
+
+15. **`git fetch <remote>` and `git merge`**
+
+    The `fetch` command downloads changes from a remote repository; the remote name is optional. It does not move the current `HEAD` to the newly fetched code. Use `merge` to move `HEAD` to that code.
+
+16. **`git pull`**
+
+    A shorter command that fetches changes from a remote repository and moves `HEAD` to the latest copy.
+
+17. **`git rebase`**
+
+    An alternative to merging, or a way to clean up commits. It is **not** meant to be run from the `main` or `master` branch; it should be run from another branch. Never rebase shared commits or code that is going to be pushed to GitHub. Rebase takes all the code from `master` and merges it into the current branch, flattening the Git graph from two separate branch histories into one line of commits.
+
+## Other useful commands
+
+1. **`git add -p file.txt`**
+
+   Lets you interactively stage pieces of code instead of the whole file. This is useful when you want to commit only certain lines.
+
+2. **`git diff --cached`**
+
+   Shows the changes and lines in the staging area that are ready to commit.
+
+3. **`git blame file.txt`**
+
+   Shows the lines in a file, who committed them, and the commit hash associated with each line.
+
+4. **`git show <commit_hash>`**
+
+   Shows information about a commit, including its message and what changed.
+
+5. **`git stash`**
+
+   Resets `HEAD` to the last commit, but does not lose uncommitted changes; they are stored temporarily. Use `git stash pop` to restore the uncommitted changes.

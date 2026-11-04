@@ -1,6 +1,6 @@
 # NoSQL Databases: To Blob or Not to Blob?
 
-Let's talk about **NoSQL** databases. You've probably heard the hype, but just because it's new and shiny doesn't mean you throw your trusty old SQL database out the window. There are perfect moments to use NoSQL, and equally valid reasons to stick with a classic RDBMS.
+Let's talk about **NoSQL** databases. You've probably heard the hype, but just because it's new and shiny doesn't mean you throw your trusty old SQL database out the window. There are perfect moments to use NoSQL, and equally valid reasons to stick with a classic RDBMS (Relational databases).
 
 Let's break down how they actually store your data.
 
@@ -21,6 +21,8 @@ If we want to store user data, it looks like this:
 | Address ID | City   | Country | District |
 | :--------- | :----- | :------ | :------- |
 | 123        | Munich | Germany | `null`   |
+
+They are like spreadsheets, each column stores the field or attribute of the table, and each row consist of single record within the table.
 
 Notice that `Address ID`? That's a foreign key pointing to another table. And look at `District`—it's empty (`null`), but we still have to keep the column around for everyone just in case!
 
@@ -129,7 +131,7 @@ _Rule of thumb: Choose NoSQL when you need flexibility and fast full-object acce
 
 ---
 
-## Deep Dive: Cassandra Architecture
+## Deep Dive: Cassandra Architecture (Consistent Hashing)
 
 Now let's zoom in on Cassandra's architecture. It’s one thing to say "NoSQL can scale," but _how_ does it actually pull it off?
 
